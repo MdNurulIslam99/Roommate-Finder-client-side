@@ -31,9 +31,10 @@ const SignIn = () => {
     // console.log("google signIn clicked");
     signInWithPopup(auth, googleProvider)
       .then((result) => {
-        // console.log(result);
-        alert(" User SignIn by Google successfully");
-        navigate("/");
+        const user = result.user;
+        console.log(user);
+        navigate(`${location.state ? location.state : "/"}`);
+        alert(" User login by Google successfully");
       })
       .catch((error) => {
         // console.log(error);
