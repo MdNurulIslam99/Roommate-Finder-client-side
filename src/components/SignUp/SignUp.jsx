@@ -2,10 +2,13 @@ import React, { use, useState } from "react";
 import { NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../../Firebase/firebase.config";
 
 const SignUp = () => {
   const { createUser, setUser, updatedUser } = use(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
+  const googleProvider = new GoogleAuthProvider();
   const navigate = useNavigate();
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -49,6 +52,20 @@ const SignUp = () => {
       })
       .catch((error) => {
         console.log(error);
+      });
+  };
+
+  const handleGoogleSignUp = () => {
+    // console.log("google signIn clicked");
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        // console.log(result);
+        alert(" User SignUp by Google successfully");
+        navigate("/");
+      })
+      .catch((error) => {
+        // console.log(error);
+        alert(" User SignUp by Google Unsuccessfully");
       });
   };
   return (
@@ -149,7 +166,7 @@ const SignUp = () => {
 
           <div className="my-6 space-y-4">
             <button
-              //   onClick={handleGoogleSignUp}
+              onClick={handleGoogleSignUp}
               aria-label="Login with Google"
               type="button"
               className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600"

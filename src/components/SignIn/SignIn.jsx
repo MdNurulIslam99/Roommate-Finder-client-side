@@ -1,11 +1,14 @@
 import React, { use } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../../Firebase/firebase.config";
 
 const SignIn = () => {
   const { signInUser } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
+  const googleProvider = new GoogleAuthProvider();
   const handleSignIn = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
@@ -21,6 +24,20 @@ const SignIn = () => {
       .catch((error) => {
         // console.log(error);
         alert(" User login by Google Unsuccessfully");
+      });
+  };
+
+  const handleGoogleSignin = () => {
+    // console.log("google signIn clicked");
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        // console.log(result);
+        alert(" User SignIn by Google successfully");
+        navigate("/");
+      })
+      .catch((error) => {
+        // console.log(error);
+        alert(" User SignIn by Google Unsuccessfully");
       });
   };
   return (
@@ -87,7 +104,7 @@ const SignIn = () => {
 
             <div className="my-6 space-y-4">
               <button
-                //   onClick={handleGoogleSignin}
+                onClick={handleGoogleSignin}
                 aria-label="Login with Google"
                 type="button"
                 className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600"

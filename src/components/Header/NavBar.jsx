@@ -116,48 +116,48 @@ const NavBar = () => {
           </li>
         </ul>
       </div>
-      <div className="navbar-end space-x-5">
-        {user && (
-          <div className="relative group">
-            <img
-              className="w-12 h-12 rounded-full cursor-pointer hidden md:block"
-              src={user.photoURL || userIcon}
-              alt="user"
-            />
-            <div className="absolute bottom-[-90px] left-1/2 transform -translate-x-1/2 bg-white shadow-md p-2 rounded-lg w-48 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-              <p className="font-semibold text-gray-800">{user.displayName}</p>
-              <p className="text-sm text-gray-600">{user.email}</p>
+      <div className="navbar-end  space-x-5">
+        {user ? (
+          <div className="flex gap-3">
+            <div className="relative group">
+              <img
+                className="w-12 h-12 rounded-full cursor-pointer hidden md:block"
+                src={user.photoURL || userIcon}
+                alt="user"
+              />
+              <div className="absolute bottom-[-90px] left-1/2 transform -translate-x-1/2 bg-white shadow-md p-2 rounded-lg w-48 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+                <p className="font-semibold text-gray-800">
+                  {user.displayName}
+                </p>
+                <p className="text-sm text-gray-600">{user.email}</p>
+              </div>
+            </div>
+
+            <div>
+              <button
+                onClick={handleLogOut}
+                className="btn bg-[#0EA106] rounded-4xl text-white px-3 md:px-5 fontMulish text-base md:text-xl"
+              >
+                LogOut
+              </button>
             </div>
           </div>
-        )}
-
-        {user ? (
-          <button
-            onClick={handleLogOut}
-            className="btn bg-[#0EA106] rounded-4xl text-white px-3 md:px-5 fontMulish text-base md:text-xl"
-          >
-            LogOut
-          </button>
         ) : (
-          <NavLink
-            to="/auth/signin"
-            className="btn bg-[#0EA106] rounded-4xl text-white px-3 md:px-5 fontMulish font-bold text-base md:text-xl"
-          >
-            Log In
-          </NavLink>
+          <div>
+            <NavLink
+              to="/auth/signin"
+              className="btn bg-[#0EA106] rounded-4xl text-white px-5 fontMulish font-bold text-base md:text-xl"
+            >
+              Login
+            </NavLink>
+            <NavLink
+              to="/auth/signup"
+              className="btn bg-[#0EA106] rounded-4xl text-white px-5 fontMulish font-bold text-base md:text-xl"
+            >
+              Sign Up
+            </NavLink>
+          </div>
         )}
-        {/* <NavLink
-          to="/auth/signin"
-          className="btn bg-[#0EA106] rounded-4xl text-white px-5 fontMulish font-bold text-xl"
-        >
-          Sign In
-        </NavLink>
-        <NavLink
-          to="/auth/signup"
-          className="btn bg-[#0EA106] rounded-4xl text-white px-5 fontMulish font-bold text-xl"
-        >
-          Sign Up
-        </NavLink> */}
       </div>
     </div>
   );
