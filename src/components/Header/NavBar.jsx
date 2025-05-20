@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import { NavLink } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
+import userIcon from "/user.png";
 
 const NavBar = () => {
   const { user, signOutUser } = use(AuthContext);
@@ -116,6 +117,20 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="navbar-end space-x-5">
+        {user && (
+          <div className="relative group">
+            <img
+              className="w-12 h-12 rounded-full cursor-pointer hidden md:block"
+              src={user.photoURL || userIcon}
+              alt="user"
+            />
+            <div className="absolute bottom-[-90px] left-1/2 transform -translate-x-1/2 bg-white shadow-md p-2 rounded-lg w-48 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
+              <p className="font-semibold text-gray-800">{user.displayName}</p>
+              <p className="text-sm text-gray-600">{user.email}</p>
+            </div>
+          </div>
+        )}
+
         {user ? (
           <button
             onClick={handleLogOut}

@@ -1,11 +1,12 @@
 import React, { use, useState } from "react";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SignUp = () => {
-  const { createUser, setUser } = use(AuthContext);
+  const { createUser, setUser, updatedUser } = use(AuthContext);
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
   const handleSignUp = (event) => {
     event.preventDefault();
     const name = event.target.name.value;
@@ -32,7 +33,19 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         // console.log(user);
-        setUser(user);
+        updatedUser({
+          displayName: name,
+          photoURL: photoUrl,
+        })
+          .then(() => {
+            alert(" User SignUp by successfully");
+            setUser({ ...user, displayName: name, photoURL: photoUrl });
+            navigate("/");
+          })
+          .catch((error) => {
+            // console.log(error);
+            setUser(user);
+          });
       })
       .catch((error) => {
         console.log(error);
