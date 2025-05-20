@@ -143,7 +143,7 @@ const NavBar = () => {
             </div>
           </div>
         ) : (
-          <div>
+          <div className="space-x-3">
             <NavLink
               to="/auth/signin"
               className="btn bg-[#0EA106] rounded-4xl text-white px-5 fontMulish font-bold text-base md:text-xl"
