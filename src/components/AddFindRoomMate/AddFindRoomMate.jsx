@@ -4,7 +4,12 @@ import Swal from "sweetalert2";
 
 const AddFindRoomMate = () => {
   const { user } = use(AuthContext);
-  const lifestyleOptions = ["Pets", "Smoking", "Night Owl"];
+  const lifestyleOptions = [
+    "Pets",
+    "Smoking",
+    "NonSmoking and Alcohol",
+    "Night Owl",
+  ];
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -43,7 +48,7 @@ const AddFindRoomMate = () => {
             timer: 1500,
           });
           console.log("after submit data", data);
-          // form.reset();
+          form.reset();
         }
       });
   };
@@ -95,12 +100,21 @@ const AddFindRoomMate = () => {
           >
             <option value="">Select</option>
             <option value="Single">Single</option>
-            <option value="Shared">Double</option>
+            <option value="Double">Double</option>
             <option value="Shared">Shared</option>
             <option value="Studio">Studio</option>
           </select>
         </div>
 
+        <div>
+          <label className="block text-lg font-bold mb-1">Room Image</label>
+          <input
+            type="text"
+            name="photoUrl"
+            className="w-full border rounded px-3 py-2"
+            required
+          />
+        </div>
         <div>
           <label className="block text-lg font-bold mb-2">
             Lifestyle Preferences

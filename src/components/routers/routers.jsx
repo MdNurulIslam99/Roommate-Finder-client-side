@@ -12,6 +12,7 @@ import AuthLayout from "../AuthLayout/AuthLayout";
 import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/SignUp";
 import PrivateRoute from "../Provider/PrivateRoute";
+import RoomCardDetails from "../RoomCardDetails/RoomCardDetails";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +23,14 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home></Home>,
+        hydrateFallbackElement: (
+          <p>
+            <span className="loading loading-bars loading-md"></span>
+            <span className="loading loading-bars loading-lg"></span>
+            <span className="loading loading-bars loading-xl"></span>
+          </p>
+        ),
+        loader: () => fetch("http://localhost:3000/emptyRoom"),
         errorElement: <ErrorCard></ErrorCard>,
       },
       {
@@ -45,6 +54,20 @@ export const router = createBrowserRouter([
             <MyListings></MyListings>
           </PrivateRoute>
         ),
+        errorElement: <ErrorCard></ErrorCard>,
+      },
+      {
+        path: "/emptyRoom/:id",
+        element: <RoomCardDetails></RoomCardDetails>,
+        hydrateFallbackElement: (
+          <p>
+            <span className="loading loading-bars loading-md"></span>
+            <span className="loading loading-bars loading-lg"></span>
+            <span className="loading loading-bars loading-xl"></span>
+          </p>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/emptyRoom/${params.id}`),
         errorElement: <ErrorCard></ErrorCard>,
       },
       {

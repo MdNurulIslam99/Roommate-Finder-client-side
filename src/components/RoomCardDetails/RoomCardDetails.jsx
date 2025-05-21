@@ -1,0 +1,111 @@
+import React from "react";
+import { NavLink, useLoaderData } from "react-router";
+
+const RoomCardDetails = () => {
+  const emptyRoomId = useLoaderData();
+  console.log(emptyRoomId);
+  //   const { _id } = useParams();
+  //   const emptyRoomId = data.find((emptyRoomData) => emptyRoomData._id == _id);
+  const {
+    title,
+    photoUrl,
+    roomType,
+    rent,
+    availability,
+    location,
+    description,
+    userName,
+    lifestyle,
+    userEmail,
+    contactEmail,
+    contactLandPhone,
+    contactPhone,
+  } = emptyRoomId || {};
+  return (
+    <div className="max-w-screen-2xl mx-auto px-16 my-20">
+      <div className="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <img
+          src={photoUrl}
+          alt={title}
+          className="w-full h-[400px] object-cover "
+        />
+        <div className="p-4 bg-base-300 ">
+          <div>
+            <h3 className="text-3xl font-bold mb-2">
+              RentPost : <span className="text-3xl">{title}</span>
+            </h3>
+            <p className="text-2xl font-bold text-gray-600 mb-1">
+              Location :
+              <span className="font-semibold text-lg "> {location}</span>
+            </p>
+            <p className="text-xl text-gray-600 font-bold mb-1">
+              Rent :<span className="font-semibold text-lg"> {rent} BDT</span>
+            </p>
+            <p className="text-xl font-bold text-gray-600 mb-1">
+              Room Type :
+              <span className="font-semibold text-lg"> {roomType} </span>
+            </p>
+            <p className="font-bold text-xl text-gray-600 mb-1">
+              Lifestyle :
+              <span className="font-semibold text-lg">
+                {" "}
+                {lifestyle.join(", ")}
+              </span>
+            </p>
+          </div>
+          <div className="mt-2 space-y-2">
+            <p className="text-xl font-bold text-gray-600">
+              ContactUs Email :
+              <span className="font-semibold text-lg"> {contactEmail}</span>{" "}
+            </p>
+            <p className="text-xl font-bold text-gray-600">
+              ContactUs us Phone:
+              <span className="font-semibold text-lg">{contactPhone}</span>{" "}
+            </p>
+            <p className="text-xl font-bold text-gray-600">
+              ContactUs LandPhone
+              <span className="font-semibold text-lg">
+                {" "}
+                {contactLandPhone}{" "}
+              </span>
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <h2 className="text-xl  font-semibold">About User :</h2>
+            <p className="text-xl font-bold text-gray-600">
+              User Email:
+              <span className="font-semibold text-lg">{userEmail}</span>{" "}
+            </p>
+            <p className="text-xl font-bold text-gray-600">
+              UserName :
+              <span className="font-semibold text-lg"> {userName} </span>
+            </p>
+          </div>
+          <div>
+            <p className="mt-3 text-xl text-green-600 font-bold">
+              Status :{" "}
+              {availability === "available" ? "Available" : "Not Available"}
+            </p>
+            <p className="text-xl font-base font-bold text-gray-700 mt-2">
+              Description :
+              <span className="text-lg font-semibold"> {description} </span>
+            </p>
+          </div>
+
+          <div className="py-5 flex justify-center items-center">
+            <NavLink
+              to="/"
+              type="submit"
+              className="w-full mt-5 px-8 py-3 text-lg text-center font-bold rounded-md dark:bg-violet-600 dark:text-gray-50"
+            >
+              Back to Category
+            </NavLink>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default RoomCardDetails;
