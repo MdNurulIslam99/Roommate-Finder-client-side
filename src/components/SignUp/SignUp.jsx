@@ -12,10 +12,15 @@ const SignUp = () => {
   const navigate = useNavigate();
   const handleSignUp = (event) => {
     event.preventDefault();
-    const name = event.target.name.value;
-    const email = event.target.email.value;
-    const photoUrl = event.target.photoUrl.value;
-    const password = event.target.password.value;
+    const form = event.target;
+    const name = form.name.value;
+    // const email = event.target.email.value;
+    const photoUrl = form.photoUrl.value;
+    // const password = event.target.password.value;
+    const formData = new FormData(form);
+    const { email, password, ...userProfile } = Object.fromEntries(
+      formData.entries()
+    );
 
     if (password.length < 6) {
       alert("password must be equal or greater than 6");
@@ -30,8 +35,9 @@ const SignUp = () => {
       return;
     }
 
-    console.log({ name, email, photoUrl, password });
+    console.log({ email, password, userProfile });
 
+    // create user in the firebase
     createUser(email, password)
       .then((result) => {
         const user = result.user;
@@ -42,8 +48,14 @@ const SignUp = () => {
         })
           .then(() => {
             alert(" User SignUp by successfully");
-            setUser({ ...user, displayName: name, photoURL: photoUrl });
+            setUser({
+              ...user,
+              displayName: name,
+              photoURL: photoUrl,
+            });
             navigate("/");
+
+            // save profile info in the data base
           })
           .catch((error) => {
             // console.log(error);
@@ -57,6 +69,8 @@ const SignUp = () => {
 
   const handleGoogleSignUp = () => {
     // console.log("google signIn clicked");
+
+    //  // create user in the firebase with google
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         // console.log(result);
