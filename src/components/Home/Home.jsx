@@ -3,6 +3,8 @@ import SwiperSlider from "../SwiperSlider/SwiperSlider";
 import { useLoaderData } from "react-router";
 import EmptyRoomCardContainer from "../EmptyRoomCardContainer/EmptyRoomCardContainer";
 import FeaturedRoommates from "../FeaturedRoommates/FeaturedRoommates";
+import CustomerReview from "../CustomerReview/CustomerReview";
+import NewProduct from "../NewProduct/NewProduct";
 
 const Home = () => {
   const emptyRooms = useLoaderData();
@@ -20,6 +22,14 @@ const Home = () => {
           key={emptyRooms._id}
           emptyRooms={emptyRooms}
         ></EmptyRoomCardContainer>
+      </div>
+
+      <div>
+        <CustomerReview></CustomerReview>
+      </div>
+
+      <div>
+        <NewProduct></NewProduct>
       </div>
     </div>
   );
