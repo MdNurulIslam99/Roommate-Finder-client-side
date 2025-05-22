@@ -22,7 +22,20 @@ const RoomCardDetails = () => {
     contactPhone,
   } = emptyRoomId || {};
   return (
-    <div className="max-w-screen-2xl mx-auto px-16 my-20">
+    <div className="max-w-screen-2xl mx-auto px-16 my-10">
+      <div className="mb-10 bg-base-300 shadow-2xl rounded-2xl p-6 space-y-3">
+        <h1 className="text-4xl font-extrabold text-center">
+          Featured Roommates Details Info
+        </h1>
+        <p className="font-semibold text-base text-center opacity-70 ">
+          Explore detailed profiles of top roommate listings, including rent,
+          room type, lifestyle, and contact info. Each post offers a clear{" "}
+          <br />
+          description to help you make quick, confident choices—whether you
+          prefer a single room, shared space, or studio.
+        </p>
+      </div>
+
       <div className="bg-white rounded-xl shadow-2xl overflow-hidden hover:shadow-xl transition-shadow duration-300">
         <img
           src={photoUrl}
@@ -93,13 +106,23 @@ const RoomCardDetails = () => {
             </p>
           </div>
 
-          <div className="py-5 flex justify-center items-center">
+          <div className="py-5 flex justify-center items-center gap-5">
+            <button className="w-full mt-5 px-8 py-3 text-xl text-center font-bold rounded-md dark:bg-violet-600 dark:text-gray-50">
+              Like
+            </button>
             <NavLink
               to="/"
               type="submit"
               className="w-full mt-5 px-8 py-3 text-lg text-center font-bold rounded-md dark:bg-violet-600 dark:text-gray-50"
             >
-              Back to Category
+              Back to Home Category
+            </NavLink>
+            <NavLink
+              to="/browseListing"
+              type="submit"
+              className="w-full mt-5 px-8 py-3 text-lg text-center font-bold rounded-md dark:bg-violet-600 dark:text-gray-50"
+            >
+              Back to BrowseListing
             </NavLink>
           </div>
         </div>

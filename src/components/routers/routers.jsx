@@ -45,6 +45,14 @@ export const router = createBrowserRouter([
       {
         path: "/browseListing",
         element: <BrowseListing></BrowseListing>,
+        hydrateFallbackElement: (
+          <p>
+            <span className="loading loading-bars loading-md"></span>
+            <span className="loading loading-bars loading-lg"></span>
+            <span className="loading loading-bars loading-xl"></span>
+          </p>
+        ),
+        loader: () => fetch("http://localhost:3000/emptyRoom"),
         errorElement: <ErrorCard></ErrorCard>,
       },
       {
@@ -58,7 +66,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/emptyRoom/:id",
-        element: <RoomCardDetails></RoomCardDetails>,
+        element: (
+          <PrivateRoute>
+            <RoomCardDetails></RoomCardDetails>
+          </PrivateRoute>
+        ),
         hydrateFallbackElement: (
           <p>
             <span className="loading loading-bars loading-md"></span>
