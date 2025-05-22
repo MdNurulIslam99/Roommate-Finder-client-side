@@ -11,6 +11,7 @@ const BrowseListingDetailsTable = ({ emptyRooms }) => {
         <table className="min-w-full  bg-white shadow-2xl rounded-2xl ">
           <thead className="bg-gray-100 text-gray-700">
             <tr>
+              <th className="py-3 px-6 border-b">Index Id</th>
               <th className="py-3 px-4 border-b">Photo</th>
               <th className="py-3 px-4 border-b">User Name</th>
               <th className="py-3 px-4 border-b">User Email</th>
@@ -22,8 +23,9 @@ const BrowseListingDetailsTable = ({ emptyRooms }) => {
             </tr>
           </thead>
           <tbody>
-            {emptyRooms.map((item) => (
+            {emptyRooms.map((item, index) => (
               <tr key={item._id} className="text-center hover:bg-gray-50">
+                <td className="py-3 px-6 border-b">{index + 1}</td>
                 <td className="py-2 px-4 border-b">
                   <img
                     src={item.photoUrl}
