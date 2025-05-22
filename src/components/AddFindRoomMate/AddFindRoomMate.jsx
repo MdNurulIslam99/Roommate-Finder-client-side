@@ -4,26 +4,17 @@ import Swal from "sweetalert2";
 
 const AddFindRoomMate = () => {
   const { user } = use(AuthContext);
-  const lifestyleOptions = [
-    "Pets",
-    "Smoking",
-    "NonSmoking and Alcohol",
-    "Night Owl",
-  ];
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const formData = new FormData(form);
 
-    // Get lifestyle checkboxes (multi-value)
-    const lifestyle = formData.getAll("lifestyle");
-
     // Convert FormData to object
     const roomFinderData = Object.fromEntries(formData.entries());
 
     // Add multi-value checkbox data manually
-    roomFinderData.lifestyle = lifestyle;
+
     roomFinderData.userEmail = user?.email;
     roomFinderData.userName = user?.displayName;
 
@@ -115,18 +106,24 @@ const AddFindRoomMate = () => {
             required
           />
         </div>
+
         <div>
-          <label className="block text-lg font-bold mb-2">
+          <label className="block text-lg font-bold mb-1">
             Lifestyle Preferences
           </label>
-          <div className="flex gap-4 flex-wrap">
-            {lifestyleOptions.map((item) => (
-              <label key={item} className="flex items-center gap-2">
-                <input type="checkbox" name="lifestyle" value={item} />
-                {item}
-              </label>
-            ))}
-          </div>
+          <select
+            name="lifestyle"
+            className="w-full border rounded px-3 py-2"
+            required
+          >
+            <option value="">Select</option>
+            <option value="Pets">Pets</option>
+            <option value="Smoking">Smoking</option>
+            <option value="NonSmoking and Alcohol">
+              NonSmoking and Alcohol
+            </option>
+            <option value="Night Owl">Night Owl</option>
+          </select>
         </div>
 
         <div>
@@ -182,6 +179,7 @@ const AddFindRoomMate = () => {
             className="w-full border rounded px-3 py-2"
             required
           >
+            <option value="">Select</option>
             <option value="available">Available</option>
             <option value="not-available">Not Available</option>
           </select>

@@ -60,10 +60,7 @@ const RoomCardDetails = () => {
             </p>
             <p className="font-bold text-xl text-gray-600 mb-1">
               Lifestyle :
-              <span className="font-semibold text-lg">
-                {" "}
-                {lifestyle.join(", ")}
-              </span>
+              <span className="font-semibold text-lg"> {lifestyle}</span>
             </p>
           </div>
           <div className="mt-2 space-y-2">
@@ -73,10 +70,13 @@ const RoomCardDetails = () => {
             </p>
             <p className="text-xl font-bold text-gray-600">
               ContactUs us Phone:
-              <span className="font-semibold text-lg">{contactPhone}</span>{" "}
+              <span className="font-semibold text-lg">
+                {" "}
+                {contactPhone}
+              </span>{" "}
             </p>
             <p className="text-xl font-bold text-gray-600">
-              ContactUs LandPhone
+              ContactUs LandPhone:
               <span className="font-semibold text-lg">
                 {" "}
                 {contactLandPhone}{" "}
@@ -88,7 +88,7 @@ const RoomCardDetails = () => {
             <h2 className="text-xl  font-semibold">About User :</h2>
             <p className="text-xl font-bold text-gray-600">
               User Email:
-              <span className="font-semibold text-lg">{userEmail}</span>{" "}
+              <span className="font-semibold text-lg"> {userEmail}</span>{" "}
             </p>
             <p className="text-xl font-bold text-gray-600">
               UserName :

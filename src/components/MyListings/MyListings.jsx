@@ -27,46 +27,6 @@ const MyListings = () => {
       });
   }, [user]);
 
-  // ✅ CHANGED
-  // const handleUpdate = (id) => {
-  //   Swal.fire({
-  //     title: "Update Feature Coming Soon!",
-  //     text: `You clicked to update post with ID: ${id}`,
-  //     icon: "info",
-  //     confirmButtonText: "OK",
-  //   });
-  // };
-
-  // ✅ CHANGED
-  // const handleDelete = (id) => {
-  //   Swal.fire({
-  //     title: "Are you sure?",
-  //     text: "You won’t be able to recover this post!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#d33",
-  //     cancelButtonColor: "#3085d6",
-  //     confirmButtonText: "Yes, delete it!",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       fetch(`http://localhost:3000/emptyRoom/${id}`, {
-  //         method: "DELETE",
-  //       })
-  //         .then((res) => {
-  //           if (res.ok) {
-  //             setPosts((prev) => prev.filter((post) => post._id !== id));
-  //             Swal.fire("Deleted!", "Your post has been deleted.", "success");
-  //           } else {
-  //             Swal.fire("Error", "Failed to delete the post.", "error");
-  //           }
-  //         })
-  //         .catch(() => {
-  //           Swal.fire("Error", "An error occurred during deletion.", "error");
-  //         });
-  //     }
-  //   });
-  // };
-
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -140,8 +100,8 @@ const MyListings = () => {
                     <td className="py-3 px-6">{rent}</td>
                     <td className="py-3 px-6">{roomType}</td>
                     <td className="py-3 px-6 capitalize">{availability}</td>
-                    <td className="py-3 px-6 text-center space-x-2">
-                      <NavLink to="/updatePost">
+                    <td className="py-3 px-6 text-center space-x-2 flex gap-3 md:flex-row flex-col">
+                      <NavLink to={`/updatePost/${_id}`}>
                         <button className="bg-[#0EA106] hover:bg-[#546b65] text-white px-3 py-1 rounded">
                           Update
                         </button>

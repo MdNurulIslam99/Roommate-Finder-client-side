@@ -1,104 +1,109 @@
-import React, { use } from "react";
-import { AuthContext } from "../Provider/AuthProvider";
+import { NavLink, useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
-import { NavLink } from "react-router";
 
-const UpdatedPost = () => {
-  const { user } = use(AuthContext);
-  const lifestyleOptions = [
-    "Pets",
-    "Smoking",
-    "NonSmoking and Alcohol",
-    "Night Owl",
-  ];
+const UpdatePost = () => {
+  const post = useLoaderData();
+  const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const formData = new FormData(form);
+  const {
+    _id,
+    title,
+    location,
+    rent,
+    roomType,
+    photoUrl,
+    lifestyle,
+    description,
+    contactEmail,
+    contactPhone,
+    contactLandPhone,
+    availability,
+    userName,
+    userEmail,
+  } = post;
 
-    // Get lifestyle checkboxes (multi-value)
-    const lifestyle = formData.getAll("lifestyle");
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const form = e.target;
 
-    // Convert FormData to object
-    const roomFinderData = Object.fromEntries(formData.entries());
+    const updatedPost = {
+      title: form.title.value,
+      location: form.location.value,
+      rent: form.rent.value,
+      roomType: form.roomType.value,
+      photoUrl: form.photoUrl.value,
+      lifestyle: form.lifestyle.value,
+      description: form.description.value,
+      contactEmail: form.contactEmail.value,
+      contactPhone: form.contactPhone.value,
+      contactLandPhone: form.contactLandPhone.value,
+      availability: form.availability.value,
+      userName,
+      userEmail,
+    };
 
-    // Add multi-value checkbox data manually
-    roomFinderData.lifestyle = lifestyle;
-    roomFinderData.userEmail = user?.email;
-    roomFinderData.userName = user?.displayName;
-
-    // console.log("Form submitted:", roomFinderData);
-    // Store to data in database.
-
-    fetch("http://localhost:3000/emptyRoom", {
-      method: "POST",
+    fetch(`http://localhost:3000/emptyRoom/${_id}`, {
+      method: "PUT",
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(roomFinderData),
+      body: JSON.stringify(updatedPost),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title:
-              "Updated data and added data database Submitted Successfully ",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          console.log("after submit data", data);
-          form.reset();
+        if (data.modifiedCount > 0) {
+          Swal.fire("Success", "Post updated successfully!", "success");
+          navigate("/myListings");
+        } else {
+          Swal.fire("Warning", "No changes were made.", "info");
         }
       });
   };
+
   return (
     <div className="max-w-3xl mx-auto px-4 py-10 bg-base-300 rounded-2xl shadow-2xl my-10">
       <h2 className="text-3xl font-bold mb-6 text-center">
-        Updated Post Find a Roommate
+        Updated to Find a Roommate
       </h2>
-      <form onSubmit={handleSubmit} className="space-y-5  p-6 ">
+      <form onSubmit={handleUpdate} className="space-y-3 max-w-xl mx-auto">
         <div>
-          <label className="block text-lg font-bold mb-1">Title</label>
+          <label className="label font-bold text-lg text-black">Title</label>
           <input
-            type="text"
             name="title"
-            className="w-full border rounded px-3 py-2"
-            placeholder="Looking for a roommate in NYC"
-            required
+            defaultValue={title}
+            className="input input-bordered rounded-lg w-full"
           />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 ">
           <div>
-            <label className="block text-lg font-bold mb-1">Location</label>
+            <label className="label font-bold text-lg text-black">
+              Location
+            </label>
             <input
-              type="text"
               name="location"
-              className="w-full border rounded px-3 py-2"
-              required
+              defaultValue={location}
+              className="input input-bordered rounded-lg w-full"
             />
           </div>
 
           <div>
-            <label className="block text-lg font-bold mb-1">Rent Amount</label>
+            <label className="label font-bold text-lg text-black">Rent</label>
             <input
-              type="number"
               name="rent"
-              className="w-full border rounded px-3 py-2"
-              required
+              defaultValue={rent}
+              className="input input-bordered rounded-lg w-full"
             />
           </div>
         </div>
-
         <div>
-          <label className="block text-lg font-bold mb-1">Room Type</label>
+          <label className="label font-bold text-lg text-black">
+            Room Type
+          </label>
           <select
             name="roomType"
-            className="w-full border rounded px-3 py-2"
-            required
+            defaultValue={roomType}
+            className="select select-bordered rounded-lg w-full"
           >
             <option value="">Select</option>
             <option value="Single">Single</option>
@@ -109,123 +114,146 @@ const UpdatedPost = () => {
         </div>
 
         <div>
-          <label className="block text-lg font-bold mb-1">Room Image</label>
+          <label className="label font-bold text-lg text-black">
+            Photo URL
+          </label>
           <input
-            type="text"
             name="photoUrl"
-            className="w-full border rounded px-3 py-2"
-            required
-          />
-        </div>
-        <div>
-          <label className="block text-lg font-bold mb-2">
-            Lifestyle Preferences
-          </label>
-          <div className="flex gap-4 flex-wrap">
-            {lifestyleOptions.map((item) => (
-              <label key={item} className="flex items-center gap-2">
-                <input type="checkbox" name="lifestyle" value={item} />
-                {item}
-              </label>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-lg font-bold mb-1">Description</label>
-          <textarea
-            name="description"
-            className="w-full border rounded px-3 py-2"
-            rows={4}
-            required
+            defaultValue={photoUrl}
+            className="input input-bordered rounded-lg w-full"
           />
         </div>
 
-        <div>
-          <label className="block text-lg font-bold mb-1">
-            Contact With Email
+        {/* <div>
+          <label className="label font-bold text-lg text-black">
+            Lifestyle (comma separated)
           </label>
           <input
-            type="email"
-            name="contactEmail"
-            className="w-full border rounded px-3 py-2"
-            required
+            name="lifestyle"
+            defaultValue={lifestyle.join(", ")}
+            className="input input-bordered rounded-lg w-full"
           />
-        </div>
+        </div> */}
 
         <div>
-          <label className="block text-lg font-bold mb-1">
-            Contact With Phone
+          <label className="label font-bold text-lg text-black">
+            Lifestyle
           </label>
-          <input
-            type="number"
-            name="contactPhone"
-            className="w-full border rounded px-3 py-2"
-            required
-          />
-        </div>
-
-        <div>
-          <label className="block text-lg font-bold mb-1">
-            Contact With Land Phone
-          </label>
-          <input
-            type="number"
-            name="contactLandPhone"
-            className="w-full border rounded px-3 py-2"
-            required
-          />
-        </div>
-
-        <div>
-          <label className="block text-lg font-bold mb-1">Availability</label>
           <select
-            name="availability"
-            className="w-full border rounded px-3 py-2"
-            required
+            name="lifestyle"
+            defaultValue={lifestyle}
+            className="select select-bordered rounded-lg w-full"
           >
-            <option value="available">Available</option>
-            <option value="not-available">Not Available</option>
+            <option value="">Select</option>
+            <option value="Pets">Pets</option>
+            <option value="Smoking">Smoking</option>
+            <option value="NonSmoking and Alcohol">
+              NonSmoking and Alcohol
+            </option>
+            <option value="Night Owl">Night Owl</option>
           </select>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4 ">
+        <div>
+          <label className="label font-bold text-lg text-black">
+            Description
+          </label>
+          <textarea
+            name="description"
+            defaultValue={description}
+            rows={4}
+            className="textarea textarea-bordered rounded-lg w-full"
+          />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
-            <label className="block text-lg font-bold mb-1 ">User Email</label>
+            <label className="label font-bold text-lg text-black">
+              Contact Email
+            </label>
             <input
-              type="text"
-              name="userEmail"
-              value={user?.email || ""}
-              readOnly
-              className="w-full border rounded px-3 py-2 bg-gray-100 cursor-not-allowed"
+              name="contactEmail"
+              defaultValue={contactEmail}
+              className="input input-bordered rounded-lg w-full"
             />
           </div>
 
           <div>
-            <label className="block text-lg font-bold mb-1">User Name</label>
+            <label className="label font-bold text-lg text-black">
+              Contact Phone
+            </label>
             <input
-              type="text"
-              name="userName"
-              value={user?.displayName || ""}
-              readOnly
-              className="w-full border rounded px-3 py-2 bg-gray-100 cursor-not-allowed"
+              name="contactPhone"
+              defaultValue={contactPhone}
+              className="input input-bordered rounded-lg w-full"
             />
           </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div>
+            <label className="label font-bold text-lg text-black">
+              Contact Land Phone
+            </label>
+            <input
+              name="contactLandPhone"
+              defaultValue={contactLandPhone}
+              className="input input-bordered rounded-lg w-full"
+            />
+          </div>
+
+          <div>
+            <label className="label font-bold text-lg text-black">
+              Availability
+            </label>
+            <select
+              name="availability"
+              defaultValue={availability}
+              className="select select-bordered rounded-lg w-full"
+            >
+              <option value="">Select</option>
+              <option value="available">Available</option>
+              <option value="not-available">Not Available</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label className="label font-bold text-lg text-black">
+            User Name (Read-only)
+          </label>
+          <input
+            name="userName"
+            defaultValue={userName}
+            readOnly
+            className="input input-bordered rounded-lg w-full bg-gray-100 cursor-not-allowed"
+          />
+        </div>
+
+        <div>
+          <label className="label font-bold text-lg text-black">
+            User Email (Read-only)
+          </label>
+          <input
+            name="userEmail"
+            defaultValue={userEmail}
+            readOnly
+            className="input input-bordered rounded-lg w-full bg-gray-100 cursor-not-allowed"
+          />
         </div>
 
         <button
           type="submit"
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
+          className="btn btn-primary w-full text-lg font-bold"
         >
-          Add button
+          Updated Post
         </button>
-
         <NavLink to="/myListings">
           <button
             type="submit"
-            className="w-full bg-[#0EA106] hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded"
+            className="btn bg-[#0EA106] text-white w-full text-lg font-bold"
           >
-            Back To MyListing
+            Back to MyListing
           </button>
         </NavLink>
       </form>
@@ -233,4 +261,4 @@ const UpdatedPost = () => {
   );
 };
 
-export default UpdatedPost;
+export default UpdatePost;

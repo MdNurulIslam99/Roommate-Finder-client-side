@@ -66,12 +66,21 @@ export const router = createBrowserRouter([
         errorElement: <ErrorCard></ErrorCard>,
       },
       {
-        path: "/updatePost",
+        path: "/updatePost/:id",
         element: (
           <PrivateRoute>
             <UpdatedPost></UpdatedPost>
           </PrivateRoute>
         ),
+        hydrateFallbackElement: (
+          <p>
+            <span className="loading loading-bars loading-md"></span>
+            <span className="loading loading-bars loading-lg"></span>
+            <span className="loading loading-bars loading-xl"></span>
+          </p>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/emptyRoom/${params.id}`),
         errorElement: <ErrorCard></ErrorCard>,
       },
       {
