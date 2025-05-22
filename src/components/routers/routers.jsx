@@ -65,7 +65,15 @@ export const router = createBrowserRouter([
         ),
         errorElement: <ErrorCard></ErrorCard>,
       },
-
+      {
+        path: "/updatePost",
+        element: (
+          <PrivateRoute>
+            <UpdatedPost></UpdatedPost>
+          </PrivateRoute>
+        ),
+        errorElement: <ErrorCard></ErrorCard>,
+      },
       {
         path: "/emptyRoom/:id",
         element: (
