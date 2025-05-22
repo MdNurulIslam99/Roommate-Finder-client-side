@@ -5,7 +5,7 @@ import { useLoaderData } from "react-router";
 
 const BrowseListing = () => {
   const emptyRooms = useLoaderData();
-  console.log(emptyRooms);
+  //console.log(emptyRooms);
   return (
     <div className="max-w-screen-2xl mx-auto px-16 ">
       <div className="mt-10 mb-10">

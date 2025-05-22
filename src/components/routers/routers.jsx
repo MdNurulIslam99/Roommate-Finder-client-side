@@ -13,6 +13,7 @@ import SignIn from "../SignIn/SignIn";
 import SignUp from "../SignUp/SignUp";
 import PrivateRoute from "../Provider/PrivateRoute";
 import RoomCardDetails from "../RoomCardDetails/RoomCardDetails";
+import UpdatedPost from "../UpdatedPost/UpdatedPost";
 
 export const router = createBrowserRouter([
   {
@@ -64,6 +65,7 @@ export const router = createBrowserRouter([
         ),
         errorElement: <ErrorCard></ErrorCard>,
       },
+
       {
         path: "/emptyRoom/:id",
         element: (

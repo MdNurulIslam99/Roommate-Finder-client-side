@@ -18,9 +18,11 @@ const SignUp = () => {
     const photoUrl = form.photoUrl.value;
     // const password = event.target.password.value;
     const formData = new FormData(form);
-    const { email, password, ...userProfile } = Object.fromEntries(
-      formData.entries()
-    );
+    const { email, password, ...rest } = Object.fromEntries(formData.entries());
+    const userProfile = {
+      email,
+      ...rest,
+    };
 
     if (password.length < 6) {
       alert("password must be equal or greater than 6");
@@ -42,6 +44,19 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         // console.log(user);
+        // save profile info in database
+        fetch("http://localhost:3000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userProfile),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("after profile save database", data);
+          });
+
         updatedUser({
           displayName: name,
           photoURL: photoUrl,
@@ -74,6 +89,7 @@ const SignUp = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         // console.log(result);
+
         alert(" User SignUp by Google successfully");
         navigate("/");
       })
