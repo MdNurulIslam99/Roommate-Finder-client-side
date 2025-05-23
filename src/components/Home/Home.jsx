@@ -9,6 +9,7 @@ import SupportDelevary from "../SupportDelevary/SupportDelevary";
 import { ThemeProvider } from "../Context/ThemeContext";
 import ThemeSwitch from "../ThemeSwitch/ThemeSwitch";
 import LottieCard from "../LottieCard/LottieCard";
+import TypewriterText from "../TypewriterText/TypewriterText";
 
 const Home = () => {
   const emptyRooms = useLoaderData();
@@ -22,6 +23,9 @@ const Home = () => {
       <div className="max-w-screen-2xl mx-auto px-16 dark:bg-gray-900 dark:text-blue-600 py-1">
         <div className="mt-10 mb-10">
           <SwiperSlider></SwiperSlider>
+        </div>
+        <div>
+          <TypewriterText></TypewriterText>
         </div>
         <div className="mt-20 ">
           <FeaturedRoommates></FeaturedRoommates>
