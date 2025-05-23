@@ -5,6 +5,7 @@ import EmptyRoomCardContainer from "../EmptyRoomCardContainer/EmptyRoomCardConta
 import FeaturedRoommates from "../FeaturedRoommates/FeaturedRoommates";
 import CustomerReview from "../CustomerReview/CustomerReview";
 import NewProduct from "../NewProduct/NewProduct";
+import SupportDelevary from "../SupportDelevary/SupportDelevary";
 
 const Home = () => {
   const emptyRooms = useLoaderData();
@@ -30,6 +31,10 @@ const Home = () => {
 
       <div>
         <NewProduct></NewProduct>
+      </div>
+
+      <div className="mt-10 mb-10">
+        <SupportDelevary></SupportDelevary>
       </div>
     </div>
   );
