@@ -6,7 +6,6 @@ import { NavLink } from "react-router";
 const MyListings = () => {
   const [posts, setPosts] = useState([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
-
   const { user, loading } = useContext(AuthContext);
 
   useEffect(() => {
@@ -52,7 +51,6 @@ const MyListings = () => {
                 text: "Your Data has been deleted.",
                 icon: "success",
               });
-              // console.log("after delete", data);
             }
           });
       }
@@ -66,22 +64,34 @@ const MyListings = () => {
     return <p className="text-center mt-10">You have no roommate posts yet.</p>;
 
   return (
-    <div className="px-10">
-      <div className="max-w-8xl mx-auto px-6 py-10 rounded-2xl border my-10">
-        <h2 className="text-4xl font-bold mb-6 text-center">
+    <div className="px-4 md:px-10">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-10 rounded-2xl border my-10">
+        <h2 className="text-2xl md:text-4xl font-bold mb-6 text-center">
           My Roommate Posts
         </h2>
-        <div className="overflow-x-auto shadow-2xl border  rounded-2xl">
-          <table className="min-w-full bg-white ">
+        <div className="overflow-x-auto shadow-2xl border rounded-2xl">
+          <table className="min-w-full bg-white text-sm md:text-base">
             <thead>
-              <tr className="bg-blue-400 text-lg font-bold text-white">
-                <th className="py-3 px-6 text-left ">Index Id</th>
-                <th className="py-3 px-6 text-left ">Title</th>
-                <th className="py-3 px-6 text-left">Location</th>
-                <th className="py-3 px-6 text-left">Rent (BDT)</th>
-                <th className="py-3 px-6 text-left">Room Type</th>
-                <th className="py-3 px-6 text-left">Availability</th>
-                <th className="py-3 px-6 text-center">Actions</th>
+              <tr className="bg-blue-400 text-white">
+                <th className="py-2 px-3 md:py-3 md:px-6 text-left">
+                  Index Id
+                </th>
+                <th className="py-2 px-3 md:py-3 md:px-6 text-left">Title</th>
+                <th className="py-2 px-3 md:py-3 md:px-6 text-left">
+                  Location
+                </th>
+                <th className="py-2 px-3 md:py-3 md:px-6 text-left">
+                  Rent (BDT)
+                </th>
+                <th className="py-2 px-3 md:py-3 md:px-6 text-left">
+                  Room Type
+                </th>
+                <th className="py-2 px-3 md:py-3 md:px-6 text-left">
+                  Availability
+                </th>
+                <th className="py-2 px-3 md:py-3 md:px-6 text-center">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -94,24 +104,28 @@ const MyListings = () => {
                     key={_id}
                     className="border-b hover:bg-gray-50 transition-colors"
                   >
-                    <td className="py-3 px-6">{index + 1}</td>
-                    <td className="py-3 px-6">{title}</td>
-                    <td className="py-3 px-6">{location}</td>
-                    <td className="py-3 px-6">{rent}</td>
-                    <td className="py-3 px-6">{roomType}</td>
-                    <td className="py-3 px-6 capitalize">{availability}</td>
-                    <td className="py-3 px-6 text-center space-x-2 flex gap-3 md:flex-row flex-col">
-                      <NavLink to={`/updatePost/${_id}`}>
-                        <button className="bg-[#0EA106] hover:bg-[#546b65] text-white px-3 py-1 rounded">
-                          Update
+                    <td className="py-2 px-3 md:py-3 md:px-6">{index + 1}</td>
+                    <td className="py-2 px-3 md:py-3 md:px-6">{title}</td>
+                    <td className="py-2 px-3 md:py-3 md:px-6">{location}</td>
+                    <td className="py-2 px-3 md:py-3 md:px-6">{rent}</td>
+                    <td className="py-2 px-3 md:py-3 md:px-6">{roomType}</td>
+                    <td className="py-2 px-3 md:py-3 md:px-6 capitalize">
+                      {availability}
+                    </td>
+                    <td className="py-2 px-3 md:py-3 md:px-6 text-center">
+                      <div className="flex flex-col md:flex-row gap-2 justify-center items-center">
+                        <NavLink to={`/updatePost/${_id}`}>
+                          <button className="bg-[#0EA106] hover:bg-[#546b65] text-white px-3 py-1 rounded">
+                            Update
+                          </button>
+                        </NavLink>
+                        <button
+                          onClick={() => handleDelete(_id)}
+                          className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded"
+                        >
+                          Delete
                         </button>
-                      </NavLink>
-                      <button
-                        onClick={() => handleDelete(_id)}
-                        className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded"
-                      >
-                        Delete
-                      </button>
+                      </div>
                     </td>
                   </tr>
                 )

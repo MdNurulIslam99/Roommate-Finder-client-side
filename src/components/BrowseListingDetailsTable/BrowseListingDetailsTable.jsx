@@ -4,10 +4,10 @@ import { NavLink } from "react-router";
 const BrowseListingDetailsTable = ({ emptyRooms }) => {
   return (
     <div className="px-4 md:px-10 py-8 max-w-7xl mx-auto ">
-      <h2 className="text-4xl font-bold mb-10 text-center">
+      <h2 className="lg:text-4xl md:text-3xl text-2xl font-bold mb-10 text-center">
         Browse Roommate Listings
       </h2>
-      <div className="overflow-x-auto rounded-2xl border ">
+      <div className="overflow-x-auto shadow-2xl rounded-2xl border ">
         <table className="min-w-full  bg-white shadow-2xl rounded-2xl ">
           <thead className="bg-gray-100 text-gray-700">
             <tr>

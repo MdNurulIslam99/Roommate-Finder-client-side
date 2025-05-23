@@ -3,6 +3,7 @@ import { NavLink, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../Firebase/firebase.config";
+import Swal from "sweetalert2";
 
 const SignIn = () => {
   const { signInUser } = use(AuthContext);
@@ -19,11 +20,24 @@ const SignIn = () => {
         const user = result.user;
         console.log(user);
         navigate(`${location.state ? location.state : "/"}`);
-        alert(" User login by Google successfully");
+        // alert(" User login by Google successfully");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User SignIn by successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((error) => {
         // console.log(error);
-        alert(" User login by Google Unsuccessfully");
+        // alert(" User login by Google Unsuccessfully");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "User can't SignIn.User name or Password was wrong!",
+          // footer: '<a href="#">Why do I have this issue?</a>',
+        });
       });
   };
 
@@ -34,11 +48,24 @@ const SignIn = () => {
         const user = result.user;
         console.log(user);
         navigate(`${location.state ? location.state : "/"}`);
-        alert(" User login by Google successfully");
+        // alert(" User login by Google successfully");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User login by Google successfully !",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((error) => {
         // console.log(error);
-        alert(" User SignIn by Google Unsuccessfully");
+        alert(" User SignIn by Google Unsuccessfully !");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "User can't SignIn by Google!",
+          // footer: '<a href="#">Why do I have this issue?</a>',
+        });
       });
   };
   return (

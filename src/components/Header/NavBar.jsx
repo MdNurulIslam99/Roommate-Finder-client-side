@@ -2,18 +2,32 @@ import React, { use } from "react";
 import { NavLink } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
 import userIcon from "/user.png";
+import Swal from "sweetalert2";
 
 const NavBar = () => {
   const { user, signOutUser } = use(AuthContext);
   const handleLogOut = () => {
     signOutUser()
       .then(() => {
-        alert("Sign-out successful");
+        // alert("Sign-out successful");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User Sign-out successful!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       })
       .catch((error) => {
         // An error happened.
         // console.log(error);
-        alert("Sign-out Unsuccessful");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Sign-out Cannot SignOut!",
+          // footer: '<a href="#">Why do I have this issue?</a>',
+        });
+        // alert("Sign-out Unsuccessful");
       });
   };
   return (
@@ -143,7 +157,7 @@ const NavBar = () => {
             </div>
           </div>
         ) : (
-          <div className=" flex flex-row gap-1">
+          <div className=" flex md:flex-row flex-col py-3 md:py-0 gap-1">
             <NavLink
               to="/auth/signin"
               className="btn bg-[#0EA106] rounded-4xl text-white px-5 fontMulish font-bold text-base md:text-xl"

@@ -24,7 +24,7 @@ const RoomCardDetails = () => {
   return (
     <div className="max-w-screen-2xl mx-auto px-16 my-10">
       <div className="mb-10 bg-base-300 shadow-2xl rounded-2xl p-6 space-y-3">
-        <h1 className="text-4xl font-extrabold text-center">
+        <h1 className="lg:text-4xl md:text-3xl text-2xl font-extrabold text-center">
           Featured Roommates Details Info
         </h1>
         <p className="font-semibold text-base text-center opacity-70 ">
@@ -44,38 +44,38 @@ const RoomCardDetails = () => {
         />
         <div className="p-4 bg-base-300 ">
           <div>
-            <h3 className="text-3xl font-bold mb-2">
-              RentPost : <span className="text-3xl">{title}</span>
+            <h3 className="md:text-3xl md:text-xl text-lg font-bold mb-2">
+              RentPost : <span className="md:text-3xl text-lg">{title}</span>
             </h3>
-            <p className="text-2xl font-bold text-gray-600 mb-1">
+            <p className="md:text-xl text-lg font-bold text-gray-600 mb-1">
               Location :
               <span className="font-semibold text-lg "> {location}</span>
             </p>
-            <p className="text-xl text-gray-600 font-bold mb-1">
+            <p className="md:text-xl text-lg text-gray-600 font-bold mb-1">
               Rent :<span className="font-semibold text-lg"> {rent} BDT</span>
             </p>
-            <p className="text-xl font-bold text-gray-600 mb-1">
+            <p className="md:text-xl text-lg font-bold text-gray-600 mb-1">
               Room Type :
               <span className="font-semibold text-lg"> {roomType} </span>
             </p>
-            <p className="font-bold text-xl text-gray-600 mb-1">
+            <p className="font-bold md:text-xl text-lg text-gray-600 mb-1">
               Lifestyle :
               <span className="font-semibold text-lg"> {lifestyle}</span>
             </p>
           </div>
           <div className="mt-2 space-y-2">
-            <p className="text-xl font-bold text-gray-600">
+            <p className="md:text-xl text-lg font-bold text-gray-600">
               ContactUs Email :
               <span className="font-semibold text-lg"> {contactEmail}</span>{" "}
             </p>
-            <p className="text-xl font-bold text-gray-600">
-              ContactUs us Phone:
+            <p className="md:text-xl text-lg font-bold text-gray-600">
+              ContactUs Phone:
               <span className="font-semibold text-lg">
                 {" "}
                 {contactPhone}
               </span>{" "}
             </p>
-            <p className="text-xl font-bold text-gray-600">
+            <p className="md:text-xl text-lg font-bold text-gray-600">
               ContactUs LandPhone:
               <span className="font-semibold text-lg">
                 {" "}
@@ -85,29 +85,32 @@ const RoomCardDetails = () => {
           </div>
 
           <div className="space-y-2">
-            <h2 className="text-xl  font-semibold">About User :</h2>
-            <p className="text-xl font-bold text-gray-600">
+            <h2 className="md:text-xl text-lg  font-semibold">About User :</h2>
+            <p className="md:text-xl text-lg font-bold text-gray-600">
               User Email:
               <span className="font-semibold text-lg"> {userEmail}</span>{" "}
             </p>
-            <p className="text-xl font-bold text-gray-600">
+            <p className="md:text-xl text-lg font-bold text-gray-600">
               UserName :
               <span className="font-semibold text-lg"> {userName} </span>
             </p>
           </div>
           <div>
-            <p className="mt-3 text-xl text-green-600 font-bold">
+            <p className="mt-3 md:text-xl text-lg text-green-600 font-bold">
               Status :{" "}
               {availability === "available" ? "Available" : "Not Available"}
             </p>
-            <p className="text-xl font-base font-bold text-gray-700 mt-2">
+            <p className="md:text-xl text-lg font-base font-bold text-gray-700 mt-2">
               Description :
-              <span className="text-lg font-semibold"> {description} </span>
+              <span className="md:text-lg text-base font-semibold">
+                {" "}
+                {description}{" "}
+              </span>
             </p>
           </div>
 
-          <div className="py-5 flex justify-center items-center gap-5">
-            <button className="w-full mt-5 px-8 py-3 text-xl text-center font-bold rounded-md dark:bg-violet-600 dark:text-gray-50">
+          <div className="py-5 flex md:flex-row flex-col justify-center items-center gap-5">
+            <button className="w-full mt-5 px-8 py-3 md:text-xl text-lg text-center font-bold rounded-md dark:bg-violet-600 dark:text-gray-50">
               Like
             </button>
             <NavLink

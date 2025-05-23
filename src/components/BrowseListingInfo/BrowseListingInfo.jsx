@@ -4,7 +4,7 @@ const BrowseListingInfo = () => {
   return (
     <div>
       <div className="mb-10 bg-base-300 shadow-2xl rounded-2xl p-6 space-y-3">
-        <h1 className="text-4xl font-extrabold text-center">
+        <h1 className="lg:text-4xl md:text-3xl text-2xl font-extrabold text-center">
           Find Your Perfect Match: Browse Listings
         </h1>
         <p className="font-semibold text-base text-center opacity-70 ">

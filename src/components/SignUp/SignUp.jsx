@@ -4,6 +4,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../../Firebase/firebase.config";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { createUser, setUser, updatedUser } = use(AuthContext);
@@ -44,6 +45,7 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         // console.log(user);
+
         // save profile info in database
         fetch("http://localhost:3000/users", {
           method: "POST",
@@ -62,18 +64,30 @@ const SignUp = () => {
           photoURL: photoUrl,
         })
           .then(() => {
-            alert(" User SignUp by successfully");
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "User SignUp by successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            // alert(" User SignUp by successfully");
             setUser({
               ...user,
               displayName: name,
               photoURL: photoUrl,
             });
             navigate("/");
-
             // save profile info in the data base
           })
           .catch((error) => {
             // console.log(error);
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "User can't SignUp.User name or Password was wrong!!",
+              // footer: '<a href="#">Why do I have this issue?</a>',
+            });
             setUser(user);
           });
       })
@@ -89,13 +103,25 @@ const SignUp = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         // console.log(result);
-
-        alert(" User SignUp by Google successfully");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User SignUp by Google successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        // alert(" User SignUp by Google successfully");
         navigate("/");
       })
       .catch((error) => {
         // console.log(error);
-        alert(" User SignUp by Google Unsuccessfully");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "User can't SignUp by Google!",
+          // footer: '<a href="#">Why do I have this issue?</a>',
+        });
+        // alert(" User SignUp by Google Unsuccessfully");
       });
   };
   return (

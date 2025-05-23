@@ -26,10 +26,10 @@ const SwiperSlider = () => {
           >
             <div className="px-2 md:px-1 lg:px-0">
               <div className="bg-black bg-opacity-50 p-8 rounded-lg">
-                <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold">
+                <h1 className="text-xl md:text-4xl lg:text-6xl font-bold">
                   Find Your Perfect Roommate – Safe and Easy
                 </h1>
-                <p className="mt-4 text-lg md:text-xl">
+                <p className="mt-4 text-base md:text-lg lg:text-xl">
                   RoomMatch helps users find compatible roommates by matching
                   lifestyle, location, and preferences—all on a secure,
                   all-in-one platform...
@@ -49,10 +49,10 @@ const SwiperSlider = () => {
           >
             <div className="px-2 md:px-1 lg:px-0">
               <div className="bg-black bg-opacity-50 p-8 rounded-lg">
-                <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold">
+                <h1 className="text-xl md:text-5xl lg:text-6xl font-bold">
                   Smart Living Starts with the Right Roommate
                 </h1>
-                <p className="mt-4 text-lg md:text-xl">
+                <p className="mt-4 text-base md:text-lg lg:text-xl">
                   ShareSpace helps you find trusted roommates or rooms by
                   filtering based on budget, habits, and location for a
                   stress-free living experience...
@@ -72,10 +72,10 @@ const SwiperSlider = () => {
           >
             <div className="px-2 md:px-1 lg:px-0">
               <div className="bg-black bg-opacity-50 p-8 rounded-lg">
-                <h1 className="text-2xl md:text-5xl lg:text-6xl font-bold">
+                <h1 className="text-xl md:text-5xl lg:text-6xl font-bold">
                   Find a Roommate Who Feels Like a Friend
                 </h1>
-                <p className="mt-4 text-lg md:text-xl">
+                <p className="mt-4 text-base md:text-lg lg:text-xl">
                   LiveBuddy connects like-minded people to find or offer shared
                   housing quickly and safely through an easy-to-use platform...
                 </p>

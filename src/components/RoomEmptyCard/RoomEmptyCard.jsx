@@ -15,9 +15,9 @@ const RoomEmptyCard = ({ data }) => {
         className="w-full h-48 object-cover"
       />
       <div className="p-4">
-        <h3 className="text-2xl font-bold">
+        <h3 className="md:text-2xl text-xl font-bold">
           Room RentTitle :{" "}
-          <span className="text-xl font-extrabold">{title}</span>
+          <span className="md:text-xl text-lg font-extrabold">{title}</span>
         </h3>
 
         <div className="mt-2">
@@ -29,7 +29,7 @@ const RoomEmptyCard = ({ data }) => {
           </p>
           <p className=" font-semibold text-base text-gray-600">
             <span className="font-bold">Room Rent :</span>{" "}
-            <span className="font-bold text-indigo-500">{rent} Taka</span>
+            <span className="font-bold text-indigo-400">{rent} Taka</span>
           </p>
           <p className="text-base text-gray-600">
             {" "}
