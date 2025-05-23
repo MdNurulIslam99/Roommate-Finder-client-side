@@ -7,10 +7,10 @@ const RoomCardDetailsInfo = () => {
         Featured Roommates Details Info
       </h1>
       <p className="font-semibold text-base text-center opacity-70 ">
-        Explore detailed profiles of top roommate listings, including rent, room
-        type, lifestyle, and contact info. Each post offers a clear description
-        to help you make quick, confident choices—whether you prefer a single
-        room, shared space, or studio.
+        The "Featured Roommates Details" section is designed to showcase a
+        handpicked list of roommate listings that are currently available and
+        stand out based on certain criteria like affordability, location, room
+        quality, or user ratings.
       </p>
     </div>
   );

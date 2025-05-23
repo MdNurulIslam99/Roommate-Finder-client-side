@@ -24,15 +24,14 @@ const RoomCardDetails = () => {
   return (
     <div className="max-w-screen-2xl mx-auto px-16 my-10">
       <div className="mb-10 bg-base-300 shadow-2xl rounded-2xl p-6 space-y-3">
-        <h1 className="lg:text-4xl md:text-3xl text-2xl font-extrabold text-center">
+        <h1 className="text-4xl font-extrabold text-center">
           Featured Roommates Details Info
         </h1>
         <p className="font-semibold text-base text-center opacity-70 ">
-          Explore detailed profiles of top roommate listings, including rent,
-          room type, lifestyle, and contact info. Each post offers a clear{" "}
-          <br />
-          description to help you make quick, confident choices—whether you
-          prefer a single room, shared space, or studio.
+          The "Featured Roommates Details" section is designed to showcase a
+          handpicked list of roommate listings that are currently available{" "}
+          <br /> and stand out based on certain criteria like affordability,
+          location, room quality, or user ratings.
         </p>
       </div>
 
@@ -44,7 +43,7 @@ const RoomCardDetails = () => {
         />
         <div className="p-4 bg-base-300 ">
           <div>
-            <h3 className="md:text-3xl md:text-xl text-lg font-bold mb-2">
+            <h3 className="lg:text-3xl md:text-xl text-lg font-bold mb-2">
               RentPost : <span className="md:text-3xl text-lg">{title}</span>
             </h3>
             <p className="md:text-xl text-lg font-bold text-gray-600 mb-1">

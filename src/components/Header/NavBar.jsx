@@ -5,6 +5,7 @@ import userIcon from "/user.png";
 import Swal from "sweetalert2";
 
 const NavBar = () => {
+  // const darkMode = true;
   const { user, signOutUser } = use(AuthContext);
   const handleLogOut = () => {
     signOutUser()
@@ -30,6 +31,11 @@ const NavBar = () => {
         // alert("Sign-out Unsuccessful");
       });
   };
+
+  // Toggle Theme
+  // const handleToggle = () => {
+  //   console.log("button was clicked");
+  // };
   return (
     <div className="navbar p-0 bg-base-100 shadow-sm mx-auto px-8 md:px-12 lg:px-16 xl:px-24">
       <div className="navbar-start">
@@ -172,6 +178,14 @@ const NavBar = () => {
             </NavLink>
           </div>
         )}
+        {/* <div>
+          <button
+            onClick={handleToggle}
+            className="btn bg-[#0EA106] rounded-4xl text-white px-3 md:px-5 fontMulish text-base md:text-xl"
+          >
+            {darkMode ? "Light Mode" : "Dark Mode"}
+          </button>
+        </div> */}
       </div>
     </div>
   );
