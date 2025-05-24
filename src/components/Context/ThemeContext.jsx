@@ -38,7 +38,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  // ✅ CHANGE: use "light" as initial fallback to avoid empty className
+  //use "light" as initial fallback to avoid empty className
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export function ThemeProvider({ children }) {
       ? "dark"
       : "light";
 
-    // ✅ CHANGE: Ensure a valid theme is applied
+    // Ensure a valid theme is applied
     setTheme(saved || systemPref);
   }, []);
 
@@ -62,7 +62,7 @@ export function ThemeProvider({ children }) {
   };
 
   return (
-    // ✅ CHANGE: Only apply the theme class if theme is not empty
+    // Only apply the theme class if theme is not empty
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div className={theme ? theme : "light"}>{children}</div>
     </ThemeContext.Provider>

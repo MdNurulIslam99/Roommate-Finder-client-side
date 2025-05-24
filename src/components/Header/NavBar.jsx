@@ -178,14 +178,6 @@ const NavBar = () => {
             </NavLink>
           </div>
         )}
-        {/* <div>
-          <button
-            onClick={handleToggle}
-            className="btn bg-[#0EA106] rounded-4xl text-white px-3 md:px-5 fontMulish text-base md:text-xl"
-          >
-            {darkMode ? "Light Mode" : "Dark Mode"}
-          </button>
-        </div> */}
       </div>
     </div>
   );
