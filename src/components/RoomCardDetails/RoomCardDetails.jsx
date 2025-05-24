@@ -5,7 +5,6 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 const RoomCardDetails = () => {
   const emptyRoomId = useLoaderData();
-  // console.log(emptyRoomId);
 
   const {
     _id,
@@ -28,9 +27,9 @@ const RoomCardDetails = () => {
   const { user } = useContext(AuthContext);
 
   const [likeCount, setLikeCount] = useState(like || 0);
+  const [showContact, setShowContact] = useState(false); // NEW STATE
 
   const handleLike = () => {
-    // Prevent user from liking their own post
     if (user?.email === userEmail) {
       Swal.fire({
         icon: "warning",
@@ -42,13 +41,10 @@ const RoomCardDetails = () => {
       return;
     }
 
-    // Increment likeCount by 1
     const newLikeCount = likeCount + 1;
-
-    // Update local state immediately
     setLikeCount(newLikeCount);
+    setShowContact(true); // SHOW CONTACT INFO AFTER LIKE
 
-    // Send updated like count to server
     fetch(`http://localhost:3000/emptyRoom/${_id}`, {
       method: "PATCH",
       headers: {
@@ -76,9 +72,10 @@ const RoomCardDetails = () => {
         </h1>
         <p className="font-semibold text-base text-center opacity-70 ">
           The "Featured Roommates Details" section is designed to showcase a
-          handpicked list of roommate listings that are currently available{" "}
-          <br /> and stand out based on certain criteria like affordability,
-          location, room quality, or user ratings.
+          handpicked list of roommate listings that are currently available
+          <br />
+          and stand out based on certain criteria like affordability, location,
+          room quality, or user ratings.
         </p>
       </div>
 
@@ -88,26 +85,26 @@ const RoomCardDetails = () => {
           alt={title}
           className="w-full h-[400px] object-cover "
         />
-        <div className="p-4 bg-base-300 ">
+        <div className="p-4 bg-base-300">
           <div>
             <div className="flex justify-between gap-5 lg:flex-row flex-col">
               <div>
                 <h3 className="lg:text-4xl md:text-xl text-lg font-bold mb-2">
-                  Rent Title :{" "}
-                  <span className="md:text-3xl text-lg">{title}</span>
+                  Rent Title :
+                  <span className="md:text-3xl text-lg"> {title}</span>
                 </h3>
               </div>
 
               <div>
                 <h2 className=" lg:mr-10 lg:text-4xl md:text-3xl text-xl font-bold mb-2">
-                  {/* <-- display number for like */}
-                  People Interested: {likeCount}{" "}
+                  People Interested: {likeCount}
                 </h2>
               </div>
             </div>
+
             <p className="md:text-xl text-lg font-bold text-gray-600 mb-1">
               Location :
-              <span className="font-semibold text-lg "> {location}</span>
+              <span className="font-semibold text-lg"> {location}</span>
             </p>
             <p className="md:text-xl text-lg text-gray-600 font-bold mb-1">
               Rent :<span className="font-semibold text-lg"> {rent} BDT</span>
@@ -121,48 +118,58 @@ const RoomCardDetails = () => {
               <span className="font-semibold text-lg"> {lifestyle}</span>
             </p>
           </div>
+
           <div className="mt-2 space-y-2">
             <p className="md:text-xl text-lg font-bold text-gray-600">
               ContactUs Email :
-              <span className="font-semibold text-lg"> {contactEmail}</span>{" "}
+              <span className="font-semibold text-lg"> {contactEmail}</span>
             </p>
-            <p className="md:text-xl text-lg font-bold text-gray-600">
-              ContactUs Phone:
-              <span className="font-semibold text-lg">
-                {" "}
-                {contactPhone}
-              </span>{" "}
-            </p>
-            <p className="md:text-xl text-lg font-bold text-gray-600">
-              ContactUs LandPhone:
-              <span className="font-semibold text-lg">
-                {" "}
-                {contactLandPhone}{" "}
-              </span>
-            </p>
+
+            {!showContact && (
+              <p className="text-emerald-600 text-xl font-semibold">
+                Click "Like" to reveal contact phone numbers.
+              </p>
+            )}
+
+            {showContact && (
+              <>
+                <p className="md:text-xl text-lg font-bold text-gray-600">
+                  ContactUs Phone:
+                  <span className="font-semibold text-lg"> {contactPhone}</span>
+                </p>
+                <p className="md:text-xl text-lg font-bold text-gray-600">
+                  ContactUs LandPhone:
+                  <span className="font-semibold text-lg">
+                    {" "}
+                    {contactLandPhone}
+                  </span>
+                </p>
+              </>
+            )}
           </div>
 
-          <div className="space-y-2">
-            <h2 className="md:text-xl text-lg  font-semibold">About User :</h2>
+          <div className="space-y-2 mt-2">
+            <h2 className="md:text-xl text-lg font-semibold">About User :</h2>
             <p className="md:text-xl text-lg font-bold text-gray-600">
               User Email:
-              <span className="font-semibold text-lg"> {userEmail}</span>{" "}
+              <span className="font-semibold text-lg"> {userEmail}</span>
             </p>
             <p className="md:text-xl text-lg font-bold text-gray-600">
               UserName :
               <span className="font-semibold text-lg"> {userName} </span>
             </p>
           </div>
+
           <div>
             <p className="mt-3 md:text-xl text-lg text-green-600 font-bold">
-              Status :{" "}
-              {availability === "available" ? "Available" : "Not Available"}
+              Status :
+              {availability === "available" ? " Available" : " Not Available"}
             </p>
             <p className="md:text-xl text-lg font-base font-bold text-gray-700 mt-2">
               Description :
               <span className="md:text-lg text-base font-semibold">
                 {" "}
-                {description}{" "}
+                {description}
               </span>
             </p>
           </div>
@@ -177,15 +184,13 @@ const RoomCardDetails = () => {
 
             <NavLink
               to="/"
-              type="submit"
-              className="w-full mt-5 px-8 py-3 text-lg text-center font-bold rounded-md bg-violet-600 text-gray-50 dark:bg-violet-600 dark:text-gray-50"
+              className="w-full mt-5 px-8 py-3 text-lg text-center font-bold rounded-md bg-violet-600 text-gray-50"
             >
               Back to Home Category
             </NavLink>
             <NavLink
               to="/browseListing"
-              type="submit"
-              className="w-full mt-5 px-8 py-3 text-lg text-center font-bold rounded-md bg-violet-600 text-gray-50 dark:bg-violet-600 dark:text-gray-50"
+              className="w-full mt-5 px-8 py-3 text-lg text-center font-bold rounded-md bg-violet-600 text-gray-50"
             >
               Back to BrowseListing
             </NavLink>
