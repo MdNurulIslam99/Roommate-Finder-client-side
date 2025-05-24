@@ -1,8 +1,8 @@
-# 🏡 Roommate Finder Website
+# Roommate Finder Website
 
 Find your ideal roommate or list your available room with ease. A secure, user-friendly platform that connects people looking for shared accommodation.
 
-**Live Site**: [https://your-live-site-url.com](https://your-live-site-url.com)
+**Live Site**: [Roommate.Finder Live Link](https://room-mate-finder-auth.web.app/)
 
 ## Features
 
