@@ -13,7 +13,7 @@ import TypewriterText from "../TypewriterText/TypewriterText";
 
 const Home = () => {
   const emptyRooms = useLoaderData();
-  console.log(emptyRooms);
+  // console.log(emptyRooms);
   return (
     <ThemeProvider>
       <div>

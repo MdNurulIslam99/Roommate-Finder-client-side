@@ -1,12 +1,22 @@
-# React + Vite
+# 🏡 Roommate Finder Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Find your ideal roommate or list your available room with ease. A secure, user-friendly platform that connects people looking for shared accommodation.
 
-Currently, two official plugins are available:
+**Live Site**: [https://your-live-site-url.com](https://your-live-site-url.com)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+**Browse Listings with Filters**  
+ Users can explore all roommate and room posts with filtering options like location, rent, room type, and lifestyle preferences.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**Add, Update, and Delete Listings**  
+ Registered users can create new listings, edit existing ones, or delete their posts through a personalized dashboard.
+
+**Like to Reveal Contact Info**  
+ Contact phone numbers are hidden by default and only shown when a user clicks the **Like** button—encouraging meaningful interactions.
+
+**Secure Login with Firebase Authentication**  
+ Firebase Auth ensures secure login and sign-up processes, protecting user data and personal posts.
+
+**My Listings Dashboard**  
+ Logged-in users can view and manage only their own roommate listings, complete with editing and deletion options.

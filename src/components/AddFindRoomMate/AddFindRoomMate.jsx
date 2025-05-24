@@ -38,7 +38,7 @@ const AddFindRoomMate = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-          console.log("after submit data", data);
+          // console.log("after submit data", data);
           form.reset();
         }
       });

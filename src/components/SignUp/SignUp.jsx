@@ -38,7 +38,7 @@ const SignUp = () => {
       return;
     }
 
-    console.log({ email, password, userProfile });
+    // console.log({ email, password, userProfile });
 
     // create user in the firebase
     createUser(email, password)
@@ -56,7 +56,7 @@ const SignUp = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log("after profile save database", data);
+            // console.log("after profile save database", data);
           });
 
         updatedUser({
@@ -92,7 +92,7 @@ const SignUp = () => {
           });
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
   };
 

@@ -14,11 +14,11 @@ const SignIn = () => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    console.log({ email, password });
+    // console.log({ email, password });
     signInUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
         navigate(`${location.state ? location.state : "/"}`);
         // alert(" User login by Google successfully");
         Swal.fire({
@@ -46,7 +46,7 @@ const SignIn = () => {
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+        // console.log(user);
         navigate(`${location.state ? location.state : "/"}`);
         // alert(" User login by Google successfully");
         Swal.fire({

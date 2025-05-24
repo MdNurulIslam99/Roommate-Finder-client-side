@@ -19,11 +19,11 @@ const MyListings = () => {
         );
         setPosts(filteredPosts);
         setLoadingPosts(false);
-      })
-      .catch((err) => {
-        console.error("Failed to fetch roommate posts:", err);
-        setLoadingPosts(false);
       });
+    // .catch((err) => {
+    //   console.error("Failed to fetch roommate posts:", err);
+    //   setLoadingPosts(false);
+    // });
   }, [user]);
 
   const handleDelete = (id) => {
