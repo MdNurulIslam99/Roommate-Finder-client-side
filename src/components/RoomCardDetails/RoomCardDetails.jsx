@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { NavLink, useLoaderData } from "react-router";
+import Swal from "sweetalert2";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const RoomCardDetails = () => {
   const emptyRoomId = useLoaderData();
-  console.log(emptyRoomId);
-  //   const { _id } = useParams();
-  //   const emptyRoomId = data.find((emptyRoomData) => emptyRoomData._id == _id);
+  // console.log(emptyRoomId);
+
   const {
+    _id,
     title,
     photoUrl,
     roomType,
@@ -20,7 +22,52 @@ const RoomCardDetails = () => {
     contactEmail,
     contactLandPhone,
     contactPhone,
+    like,
   } = emptyRoomId || {};
+
+  const { user } = useContext(AuthContext);
+
+  const [likeCount, setLikeCount] = useState(like || 0);
+
+  const handleLike = () => {
+    // Prevent user from liking their own post
+    if (user?.email === userEmail) {
+      Swal.fire({
+        icon: "warning",
+        title: "Oops!",
+        text: "You can't like your own post.",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+      return;
+    }
+
+    // Increment likeCount by 1
+    const newLikeCount = likeCount + 1;
+
+    // Update local state immediately
+    setLikeCount(newLikeCount);
+
+    // Send updated like count to server
+    fetch(`http://localhost:3000/emptyRoom/${_id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ like: newLikeCount }),
+    })
+      .then((res) => res.json())
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Liked!",
+          text: "You liked this",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      });
+  };
+
   return (
     <div className="max-w-screen-2xl mx-auto px-16 my-10">
       <div className="mb-10 bg-base-300 shadow-2xl rounded-2xl p-6 space-y-3">
@@ -43,9 +90,21 @@ const RoomCardDetails = () => {
         />
         <div className="p-4 bg-base-300 ">
           <div>
-            <h3 className="lg:text-3xl md:text-xl text-lg font-bold mb-2">
-              RentPost : <span className="md:text-3xl text-lg">{title}</span>
-            </h3>
+            <div className="flex justify-between gap-5 lg:flex-row flex-col">
+              <div>
+                <h3 className="lg:text-4xl md:text-xl text-lg font-bold mb-2">
+                  Rent Title :{" "}
+                  <span className="md:text-3xl text-lg">{title}</span>
+                </h3>
+              </div>
+
+              <div>
+                <h2 className=" lg:mr-10 lg:text-4xl md:text-3xl text-xl font-bold mb-2">
+                  {/* <-- display number for like */}
+                  People Interested: {likeCount}{" "}
+                </h2>
+              </div>
+            </div>
             <p className="md:text-xl text-lg font-bold text-gray-600 mb-1">
               Location :
               <span className="font-semibold text-lg "> {location}</span>
@@ -109,20 +168,24 @@ const RoomCardDetails = () => {
           </div>
 
           <div className="py-5 flex md:flex-row flex-col justify-center items-center gap-5">
-            <button className="w-full mt-5 px-8 py-3 md:text-xl text-lg text-center font-bold rounded-md dark:bg-violet-600 dark:text-gray-50">
+            <button
+              onClick={handleLike}
+              className="w-full mt-5 px-8 py-3 md:text-xl text-lg text-center font-bold rounded-md text-gray-50 bg-violet-600 dark:bg-violet-600 dark:text-gray-50"
+            >
               Like
             </button>
+
             <NavLink
               to="/"
               type="submit"
-              className="w-full mt-5 px-8 py-3 text-lg text-center font-bold rounded-md dark:bg-violet-600 dark:text-gray-50"
+              className="w-full mt-5 px-8 py-3 text-lg text-center font-bold rounded-md bg-violet-600 text-gray-50 dark:bg-violet-600 dark:text-gray-50"
             >
               Back to Home Category
             </NavLink>
             <NavLink
               to="/browseListing"
               type="submit"
-              className="w-full mt-5 px-8 py-3 text-lg text-center font-bold rounded-md dark:bg-violet-600 dark:text-gray-50"
+              className="w-full mt-5 px-8 py-3 text-lg text-center font-bold rounded-md bg-violet-600 text-gray-50 dark:bg-violet-600 dark:text-gray-50"
             >
               Back to BrowseListing
             </NavLink>

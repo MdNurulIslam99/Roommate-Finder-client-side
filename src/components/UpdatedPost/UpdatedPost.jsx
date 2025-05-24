@@ -18,6 +18,7 @@ const UpdatePost = () => {
     contactPhone,
     contactLandPhone,
     availability,
+    like,
     userName,
     userEmail,
   } = post;
@@ -124,17 +125,6 @@ const UpdatePost = () => {
           />
         </div>
 
-        {/* <div>
-          <label className="label font-bold text-lg text-black">
-            Lifestyle (comma separated)
-          </label>
-          <input
-            name="lifestyle"
-            defaultValue={lifestyle.join(", ")}
-            className="input input-bordered rounded-lg w-full"
-          />
-        </div> */}
-
         <div>
           <label className="label font-bold text-lg text-black">
             Lifestyle
@@ -218,6 +208,14 @@ const UpdatePost = () => {
           </div>
         </div>
 
+        <div>
+          <label className="label font-bold text-lg text-black">Liked</label>
+          <input
+            name="like"
+            defaultValue={like}
+            className="input input-bordered rounded-lg w-full bg-gray-100 cursor-not-allowed"
+          />
+        </div>
         <div>
           <label className="label font-bold text-lg text-black">
             User Name (Read-only)

@@ -185,6 +185,15 @@ const AddFindRoomMate = () => {
           </select>
         </div>
 
+        <div>
+          <label className="block text-lg font-bold mb-1">Liked</label>
+          <input
+            type="number"
+            name="like"
+            className="w-full border rounded px-3 py-2 bg-gray-100 cursor-not-allowed"
+          />
+        </div>
+
         <div className="grid md:grid-cols-2 gap-4 ">
           <div>
             <label className="block text-lg font-bold mb-1 ">User Email</label>
