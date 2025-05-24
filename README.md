@@ -1,4 +1,4 @@
-# Roommate Finder Website
+# Roommate.Finder Website
 
 Find your ideal roommate or list your available room with ease. A secure, user-friendly platform that connects people looking for shared accommodation.
 
