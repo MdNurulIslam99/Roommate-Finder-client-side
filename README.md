@@ -119,6 +119,6 @@ Roommate.Finder is a modern web app that streamlines the process of finding room
 
 🔴 Live Site: https://modern-hotel-bookings.web.app/
 
-🟡 Client Repository: https://github.com/MdNurulIslam99/prime-lodge-bookify-client-side.git
+🟡 Client Repository: https://github.com/MdNurulIslam99/Roommate-Finder-client-side/tree/main
 
-🔵 Server Repository: https://github.com/MdNurulIslam99/prime-lodge-bookify-server-si
+🔵 Server Repository: https://github.com/MdNurulIslam99/Roommate-Finder-server-side
