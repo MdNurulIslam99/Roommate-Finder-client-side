@@ -1,7 +1,7 @@
 import React from "react";
+import dayMode from "/dayMode.png";
+import nightMode from "/nightMode.png";
 
-import dayMode from "../../assets/dayMode.png";
-import nightMode from "../../assets/nightMode.png";
 import { useTheme } from "../Context/ThemeContext";
 
 function ThemeSwitch() {

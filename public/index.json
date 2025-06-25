@@ -1,0 +1,122 @@
+[
+  {
+    "name": "InterContinental Dhaka",
+    "address": "1 Minto Road, Ramna, Dhaka, Bangladesh",
+    "coordinates": [23.7415, 90.4046],
+    "description": "A prominent luxury hotel in central Dhaka, originally opened in 1966, offering upscale accommodations and historic significance."
+  },
+  {
+    "name": "The Westin Dhaka",
+    "address": "Plot‑01, Road‑45, Gulshan‑2, Dhaka‑1212, Bangladesh",
+    "coordinates": [23.7858, 90.4203],
+    "description": "A 5‑star hotel and one of Bangladesh's tallest, featuring modern amenities and 26 floors of guest rooms."
+  },
+  {
+    "name": "Pan Pacific Sonargaon",
+    "address": "107 Kazi Nazrul Islam Avenue, Kawran Bazar, Dhaka, Bangladesh",
+    "coordinates": [23.735, 90.399],
+    "description": "One of Dhaka’s oldest 5‑star hotels (est. 1981), government‑owned and centrally located, featuring extensive renovation and amenities."
+  },
+  {
+    "name": "Radisson Blu Hotel, Chittagong",
+    "address": "Lal Khan Bazar, Chittagong, Bangladesh",
+    "coordinates": [22.3369, 91.8172],
+    "description": "Chittagong’s first 5‑star hotel, opened in April 2015, offering 241 rooms, multiple restaurants, spa, pool, and tennis court."
+  },
+  {
+    "name": "Renaissance Dhaka Gulshan Hotel",
+    "address": "Gulshan, Dhaka, Bangladesh",
+    "coordinates": [23.7925, 90.423],
+    "description": "A luxury business‑leisure hotel in Dhaka’s corporate hub, featuring an infinity rooftop pool, spa, and diverse dining options."
+  },
+  {
+    "name": "Holiday Inn Dhaka City Centre",
+    "address": "23 Shahid Tajuddin Ahmed Sharani, Tejgaon, Dhaka, Bangladesh",
+    "coordinates": [23.761, 90.403],
+    "description": "IHG‑branded upscale hotel in Dhaka offering modern rooms, pool, spa, and parking."
+  },
+  {
+    "name": "Crowne Plaza Dhaka Gulshan",
+    "address": "6A North Avenue, Commercial Area, Gulshan, Dhaka, Bangladesh",
+    "coordinates": [23.793, 90.425],
+    "description": "A premium IHG hotel in Gulshan, featuring amenities like pool, spa, and business facilities."
+  },
+  {
+    "name": "Hotel Agrabad",
+    "address": "Sabder Ali Road, Agrabad Commercial Area, Chittagong, Bangladesh",
+    "coordinates": [22.3378, 91.8313],
+    "description": "Chittagong’s first 4‑star hotel (est. 1969) with 101 rooms, a pool, and bar."
+  },
+  {
+    "name": "Platinum Suites",
+    "address": "House no.58, Road No.11, Block‑F, Banani, Dhaka‑1213, Bangladesh",
+    "coordinates": [23.7805, 90.409],
+    "description": "A boutique 7‑floor hotel in Banani with 24 suites and multiple dining venues."
+  },
+  {
+    "name": "Grand Sylhet Hotel & Resort",
+    "address": "Sylhet City, Sylhet, Bangladesh",
+    "coordinates": [24.8949, 91.8687],
+    "description": "A 5‑star resort in Sylhet with spa, pool, and excellent guest reviews."
+  },
+  {
+    "name": "Hotel Noorjahan Grand",
+    "address": "Sylhet City, Sylhet, Bangladesh",
+    "coordinates": [24.8949, 91.8687],
+    "description": "A popular 4‑star hotel in Sylhet featuring rooftop pool, fitness centre, garden and terrace."
+  },
+  {
+    "name": "Hotel Crystal Rose Sylhet",
+    "address": "Sylhet City, Sylhet, Bangladesh",
+    "coordinates": [24.8949, 91.8687],
+    "description": "A 4‑star hotel in Sylhet with fitness centre, lounge, and spa services."
+  },
+  {
+    "name": "Hotel Star Pacific",
+    "address": "Sylhet City, Sylhet, Bangladesh",
+    "coordinates": [24.8949, 91.8687],
+    "description": "A 3‑star Sylhet hotel with indoor pool, restaurant, and 24‑hour front desk."
+  },
+  {
+    "name": "Grand Palace Hotel & Resorts Sylhet",
+    "address": "Sylhet City, Sylhet, Bangladesh",
+    "coordinates": [24.8949, 91.8687],
+    "description": "4.5‑star hotel in Sylhet featuring indoor pool, restaurants and spa."
+  },
+  {
+    "name": "Excelsior Sylhet Hotel & Resort",
+    "address": "Sylhet City, Sylhet, Bangladesh",
+    "coordinates": [24.8949, 91.8687],
+    "description": "A 3.5‑star resort in Sylhet with fitness facilities and resort atmosphere."
+  },
+  {
+    "name": "Jatra Flagship Dhaka Lake View",
+    "address": "Dhaka, Bangladesh",
+    "coordinates": [23.773, 90.41],
+    "description": "A family‑friendly IHG‑branded hotel with lake views in Dhaka."
+  },
+  {
+    "name": "The Peninsula Chittagong Limited",
+    "address": "Chittagong, Bangladesh",
+    "coordinates": [22.3569, 91.7832],
+    "description": "A prominent 5‑star hotel in Chittagong known for full‑service amenities."
+  },
+  {
+    "name": "Lakeshore Hotel & Apartments",
+    "address": "Baridhara Lake View, Dhaka, Bangladesh",
+    "coordinates": [23.782, 90.416],
+    "description": "A 5‑star property on Gulshan Baridhara Lake, featuring pool, spa, and dining options."
+  },
+  {
+    "name": "Best Western Plus Maple Leaf",
+    "address": "Dhaka Airport Area, Dhaka, Bangladesh",
+    "coordinates": [23.847, 90.407],
+    "description": "A 4‑star international chain hotel near Shahjalal Airport with fitness centre and terrace bar."
+  },
+  {
+    "name": "Radisson Water Garden Hotel",
+    "address": "Dhaka, Bangladesh",
+    "coordinates": [23.75, 90.38],
+    "description": "A luxury Radisson property in Dhaka with upscale amenities and high guest satisfaction."
+  }
+]
