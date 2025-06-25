@@ -1,6 +1,6 @@
 # 🏨 Roommate.Finder Website
 
-Roommate.Finder is a modern web app that streamlines the process of finding roommates and shared housing. Users can easily post and browse listings, connect with potential roommates, and manage shared living—all within a secure and intuitive interface. Built with React.js, Node.js, Express, and Firebase, it ensures fast performance, real-time updates, and a smooth user experience.
+Roommate.Finder is a modern web app that streamlines the process of finding roommates and shared housing. Users can easily post and browse listings, connect with potential roommates, and manage shared living—all within a secure and intuitive interface. Built with React.js, Express, and Firebase, it ensures fast performance, real-time updates, and a smooth user experience.
 
 📍 **Live Site**: [Roommate.Finder Live Link](https://room-mate-finder-auth.web.app/)
 
