@@ -9,7 +9,7 @@ const DashboardOverview = () => {
 
   // ✅ CHANGED: Fetch all items
   useEffect(() => {
-    fetch("http://localhost:3000/emptyRoom")
+    fetch("https://roommate-finder-server-psi.vercel.app/emptyRoom")
       .then((res) => res.json())
       .then((data) => {
         setAllItems(data);

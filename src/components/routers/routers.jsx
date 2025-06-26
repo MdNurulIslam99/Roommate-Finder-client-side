@@ -35,7 +35,8 @@ export const router = createBrowserRouter([
             <span className="loading loading-bars loading-xl"></span>
           </p>
         ),
-        loader: () => fetch("http://localhost:3000/emptyRoom"),
+        loader: () =>
+          fetch("https://roommate-finder-server-psi.vercel.app/emptyRoom"),
         errorElement: <ErrorCard></ErrorCard>,
       },
       {
@@ -57,7 +58,8 @@ export const router = createBrowserRouter([
             <span className="loading loading-bars loading-xl"></span>
           </p>
         ),
-        loader: () => fetch("http://localhost:3000/emptyRoom"),
+        loader: () =>
+          fetch("https://roommate-finder-server-psi.vercel.app/emptyRoom"),
         errorElement: <ErrorCard></ErrorCard>,
       },
       {
@@ -79,7 +81,8 @@ export const router = createBrowserRouter([
             <span className="loading loading-bars loading-xl"></span>
           </p>
         ),
-        loader: () => fetch("http://localhost:3000/emptyRoom"),
+        loader: () =>
+          fetch("https://roommate-finder-server-psi.vercel.app/emptyRoom"),
         errorElement: <ErrorCard></ErrorCard>,
       },
       {
@@ -97,7 +100,9 @@ export const router = createBrowserRouter([
           </p>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/emptyRoom/${params.id}`),
+          fetch(
+            `https://roommate-finder-server-psi.vercel.app/emptyRoom/${params.id}`
+          ),
         errorElement: <ErrorCard></ErrorCard>,
       },
       {
@@ -115,7 +120,9 @@ export const router = createBrowserRouter([
           </p>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/emptyRoom/${params.id}`),
+          fetch(
+            `https://roommate-finder-server-psi.vercel.app/emptyRoom/${params.id}`
+          ),
         errorElement: <ErrorCard></ErrorCard>,
       },
 
@@ -179,7 +186,8 @@ export const router = createBrowserRouter([
             <span className="loading loading-bars loading-xl"></span>
           </p>
         ),
-        loader: () => fetch("http://localhost:3000/emptyRoom"),
+        loader: () =>
+          fetch("https://roommate-finder-server-psi.vercel.app/emptyRoom"),
         errorElement: <ErrorCard></ErrorCard>,
       },
       {

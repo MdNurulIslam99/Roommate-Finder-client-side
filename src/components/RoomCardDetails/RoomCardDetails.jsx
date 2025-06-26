@@ -45,7 +45,7 @@ const RoomCardDetails = () => {
     setLikeCount(newLikeCount);
     setShowContact(true); // SHOW CONTACT INFO AFTER LIKE
 
-    fetch(`http://localhost:3000/emptyRoom/${_id}`, {
+    fetch(`https://roommate-finder-server-psi.vercel.app/emptyRoom/${_id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
