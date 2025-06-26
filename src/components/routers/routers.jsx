@@ -17,6 +17,7 @@ import UpdatedPost from "../UpdatedPost/UpdatedPost";
 import AllItems from "../AllItems/AllItems";
 import DashboardOverview from "../DashboardOverview/DashboardOverview";
 import DashboardLayout from "../DashboardLayout/DashboardLayout";
+import DashboardAllItem from "../DashboardAllItem/DashboardAllItem";
 
 export const router = createBrowserRouter([
   {
@@ -170,7 +171,7 @@ export const router = createBrowserRouter([
 
       {
         path: "allItems",
-        element: <BrowseListing></BrowseListing>,
+        element: <DashboardAllItem></DashboardAllItem>,
         hydrateFallbackElement: (
           <p>
             <span className="loading loading-bars loading-md"></span>

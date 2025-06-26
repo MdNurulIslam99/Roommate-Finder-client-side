@@ -152,7 +152,9 @@ const DashboardLayout = () => {
         >
           <FaBars size={24} />
         </button>
-        <Outlet />
+        <div className=" ">
+          <Outlet></Outlet>
+        </div>
       </div>
     </div>
   );

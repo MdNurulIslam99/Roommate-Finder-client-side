@@ -43,7 +43,7 @@ const UpdatePost = () => {
       userEmail,
     };
 
-    fetch(`http://localhost:3000/${_id}`, {
+    fetch(`http://localhost:3000/emptyRoom/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
