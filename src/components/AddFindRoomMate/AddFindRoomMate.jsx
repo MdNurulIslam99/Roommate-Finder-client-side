@@ -21,7 +21,7 @@ const AddFindRoomMate = () => {
     // console.log("Form submitted:", roomFinderData);
     // Store to data in database.
 
-    fetch("https://roommate-finder-server-psi.vercel.app/emptyRoom", {
+    fetch("http://localhost:3000/emptyRoom", {
       method: "POST",
       headers: {
         "content-type": "application/json",

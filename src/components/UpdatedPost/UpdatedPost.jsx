@@ -43,7 +43,7 @@ const UpdatePost = () => {
       userEmail,
     };
 
-    fetch(`https://roommate-finder-server-psi.vercel.app/emptyRoom/${_id}`, {
+    fetch(`http://localhost:3000/${_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

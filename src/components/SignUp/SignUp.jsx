@@ -47,7 +47,7 @@ const SignUp = () => {
         // console.log(user);
 
         // save profile info in database
-        fetch("https://roommate-finder-server-psi.vercel.app/users", {
+        fetch("http://localhost:3000/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

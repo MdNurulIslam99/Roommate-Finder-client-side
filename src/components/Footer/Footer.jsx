@@ -13,11 +13,13 @@ const Footer = () => {
             {/* Logo & About  */}
             <div>
               <div className="flex justify-center items-center gap-3">
-                <img
-                  className="h-10 w-10 md:block hidden rounded-full relative right-8 -top-3"
-                  src="https://i.ibb.co/ccGK5VxL/icon.jpg"
-                  alt=""
-                />
+                <div className="p-1 bg-gray-50 rounded-full relative right-8 -top-3">
+                  <img
+                    className="h-10 w-10 rounded-full"
+                    src="https://i.ibb.co/ccGK5VxL/icon.jpg"
+                    alt=""
+                  />
+                </div>
                 <h2 className="text-2xl relative right-8 font-bold mb-4">
                   {" "}
                   Roommate.Finder

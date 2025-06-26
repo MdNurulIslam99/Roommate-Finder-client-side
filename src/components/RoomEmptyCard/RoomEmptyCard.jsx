@@ -1,44 +1,57 @@
 import React from "react";
 import { NavLink } from "react-router";
 
+//  Accept description & fullDescription for details page
 const RoomEmptyCard = ({ data }) => {
-  const { title, photoUrl, roomType, rent, availability, location, _id } =
-    data || {};
+  const {
+    _id,
+    title,
+    photoUrl,
+    // roomType,
+    // rent,
+    // availability,
+    // location,
+    description, //  added
+  } = data || {};
+
   return (
-    <div
-      className="bg-white rounded-xl shadow-md overflow-hidden
-         hover:shadow-lg transition duration-300"
-    >
+    //  Make card height consistent using flex and h-full
+    <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300 flex flex-col h-full">
       <img
         src={photoUrl}
-        alt="Smart Home Box"
-        className="w-full h-48 object-cover"
+        alt={title}
+        className="w-full h-40 object-cover" //  reduced height for balance
       />
-      <div className="p-4">
-        <h3 className="md:text-2xl text-xl font-bold">
-          Room RentTitle :{" "}
-          <span className="md:text-xl text-lg font-extrabold">{title}</span>
-        </h3>
 
-        <div className="mt-2">
-          <p className="text-base text-gray-600">
-            <span className="font-bold">Rent Location :</span> {location}.
+      <div className="p-4 flex flex-col justify-between flex-1">
+        {" "}
+        {/*  CHANGED */}
+        <div>
+          <h3 className="text-xl font-bold mb-2">{title}</h3>
+
+          {/*  Added short description */}
+          <p className="text-gray-600 text-sm mb-3">
+            <span className="font-bold">Description: </span>{" "}
+            {description?.slice(0, 90)}...
+          </p>
+
+          {/* <p className="text-base text-gray-600">
+            <span className="font-bold">Location:</span> {location}
           </p>
           <p className="text-base text-gray-600">
-            <span className="font-bold">Room Type :</span> {roomType}.
-          </p>
-          <p className=" font-semibold text-base text-gray-600">
-            <span className="font-bold">Room Rent :</span>{" "}
-            <span className="font-bold text-indigo-400">{rent} Taka</span>
+            <span className="font-bold">Room Type:</span> {roomType}
           </p>
           <p className="text-base text-gray-600">
-            {" "}
-            <span className="font-bold">RoomRent Status :</span> {availability}
+            <span className="font-bold">Rent:</span>{" "}
+            <span className="text-indigo-500 font-bold">{rent} Taka</span>
           </p>
+          <p className="text-base text-gray-600">
+            <span className="font-bold">Status:</span> {availability}
+          </p> */}
         </div>
+        {/*  Button aligned bottom */}
         <NavLink to={`/emptyRoom/${_id}`}>
-          {/* to={`/roomCardDetails/${_id}`} */}
-          <button className=" mt-4 w-full bg-[#0EA106] font-semibold text-white py-2 rounded-lg hover:bg-blue-300 transition">
+          <button className="mt-4 w-full bg-[#0EA106] text-white py-2 rounded-lg hover:bg-green-600 transition">
             See More
           </button>
         </NavLink>

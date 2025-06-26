@@ -43,7 +43,7 @@ const BrowseListingDetailsTable = ({ emptyRooms }) => {
                 </td>
                 <td className="py-2 px-4 border-b">
                   <NavLink to={`/emptyRoom/${item._id}`}>
-                    <button className=" mt-4 w-full bg-[#0EA106] font-semibold text-white py-2 rounded-lg hover:bg-blue-300 transition">
+                    <button className=" m-2 text-base w-full bg-[#0EA106] font-semibold text-white py-2 rounded-lg hover:bg-blue-300 transition">
                       See More
                     </button>
                   </NavLink>

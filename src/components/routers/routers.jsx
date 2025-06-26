@@ -14,6 +14,9 @@ import SignUp from "../SignUp/SignUp";
 import PrivateRoute from "../Provider/PrivateRoute";
 import RoomCardDetails from "../RoomCardDetails/RoomCardDetails";
 import UpdatedPost from "../UpdatedPost/UpdatedPost";
+import AllItems from "../AllItems/AllItems";
+import DashboardOverview from "../DashboardOverview/DashboardOverview";
+import DashboardLayout from "../DashboardLayout/DashboardLayout";
 
 export const router = createBrowserRouter([
   {
@@ -31,8 +34,7 @@ export const router = createBrowserRouter([
             <span className="loading loading-bars loading-xl"></span>
           </p>
         ),
-        loader: () =>
-          fetch("https://roommate-finder-server-psi.vercel.app/emptyRoom"),
+        loader: () => fetch("http://localhost:3000/emptyRoom"),
         errorElement: <ErrorCard></ErrorCard>,
       },
       {
@@ -54,8 +56,7 @@ export const router = createBrowserRouter([
             <span className="loading loading-bars loading-xl"></span>
           </p>
         ),
-        loader: () =>
-          fetch("https://roommate-finder-server-psi.vercel.app/emptyRoom"),
+        loader: () => fetch("http://localhost:3000/emptyRoom"),
         errorElement: <ErrorCard></ErrorCard>,
       },
       {
@@ -65,6 +66,19 @@ export const router = createBrowserRouter([
             <MyListings></MyListings>
           </PrivateRoute>
         ),
+        errorElement: <ErrorCard></ErrorCard>,
+      },
+      {
+        path: "/allItems",
+        element: <AllItems></AllItems>,
+        hydrateFallbackElement: (
+          <p>
+            <span className="loading loading-bars loading-md"></span>
+            <span className="loading loading-bars loading-lg"></span>
+            <span className="loading loading-bars loading-xl"></span>
+          </p>
+        ),
+        loader: () => fetch("http://localhost:3000/emptyRoom"),
         errorElement: <ErrorCard></ErrorCard>,
       },
       {
@@ -82,9 +96,7 @@ export const router = createBrowserRouter([
           </p>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://roommate-finder-server-psi.vercel.app/emptyRoom/${params.id}`
-          ),
+          fetch(`http://localhost:3000/emptyRoom/${params.id}`),
         errorElement: <ErrorCard></ErrorCard>,
       },
       {
@@ -102,11 +114,10 @@ export const router = createBrowserRouter([
           </p>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://roommate-finder-server-psi.vercel.app/emptyRoom/${params.id}`
-          ),
+          fetch(`http://localhost:3000/emptyRoom/${params.id}`),
         errorElement: <ErrorCard></ErrorCard>,
       },
+
       {
         path: "/termsCondition",
         element: <TermsConditions></TermsConditions>,
@@ -139,6 +150,49 @@ export const router = createBrowserRouter([
       {
         path: "/auth/signup",
         element: <SignUp></SignUp>,
+        errorElement: <ErrorCard></ErrorCard>,
+      },
+    ],
+  },
+
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: <DashboardOverview />,
+      },
+
+      {
+        path: "allItems",
+        element: <BrowseListing></BrowseListing>,
+        hydrateFallbackElement: (
+          <p>
+            <span className="loading loading-bars loading-md"></span>
+            <span className="loading loading-bars loading-lg"></span>
+            <span className="loading loading-bars loading-xl"></span>
+          </p>
+        ),
+        loader: () => fetch("http://localhost:3000/emptyRoom"),
+        errorElement: <ErrorCard></ErrorCard>,
+      },
+      {
+        path: "myItems",
+        element: (
+          <PrivateRoute>
+            <MyListings></MyListings>
+          </PrivateRoute>
+        ),
+        errorElement: <ErrorCard></ErrorCard>,
+      },
+      {
+        path: "addToFindRoommate",
+        element: <AddFindRoomMate></AddFindRoomMate>,
         errorElement: <ErrorCard></ErrorCard>,
       },
     ],

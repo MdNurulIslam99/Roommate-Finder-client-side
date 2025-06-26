@@ -11,7 +11,7 @@ const MyListings = () => {
   useEffect(() => {
     if (!user?.email) return;
 
-    fetch("https://roommate-finder-server-psi.vercel.app/emptyRoom")
+    fetch("http://localhost:3000/emptyRoom")
       .then((res) => res.json())
       .then((postsData) => {
         const filteredPosts = postsData.filter(
@@ -37,7 +37,7 @@ const MyListings = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://roommate-finder-server-psi.vercel.app/emptyRoom/${id}`, {
+        fetch(`http://localhost:3000/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

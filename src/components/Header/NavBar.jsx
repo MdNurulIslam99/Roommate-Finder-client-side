@@ -37,7 +37,7 @@ const NavBar = () => {
   //   console.log("button was clicked");
   // };
   return (
-    <div className="navbar p-0 bg-base-100 shadow-sm mx-auto px-8 md:px-12 lg:px-16 xl:px-24">
+    <div className="navbar fixed top-0 left-0 w-full z-50 bg-base-100 shadow-sm px-6 md:px-12 lg:px-20 xl:px-24">
       <div className="navbar-start">
         <div className="dropdown">
           <div
@@ -84,9 +84,15 @@ const NavBar = () => {
             <li>
               <NavLink to="/myListings">My Listings</NavLink>
             </li>
+            <li>
+              <NavLink to="/allItems">All Rooms</NavLink>
+            </li>
+            <li>
+              <NavLink to="/dashboard">Dashboard</NavLink>
+            </li>
           </ul>
         </div>
-        <NavLink className="btn btn-ghost text-xl">
+        <NavLink to="/" className="btn btn-ghost text-xl">
           <img
             className="h-10 w-10 md:block hidden rounded-full"
             src="https://i.ibb.co/ccGK5VxL/icon.jpg"
@@ -103,37 +109,56 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1 fontMulish text-xl font-bold">
           <li>
             <NavLink
-              className={({ isActive }) => (isActive ? "text-indigo-800" : "")}
               to="/"
+              className={({ isActive }) => (isActive ? "text-indigo-600" : "")}
             >
               Home
             </NavLink>
           </li>
-
           <li>
             <NavLink
-              className={({ isActive }) => (isActive ? "text-indigo-800" : "")}
               to="/addToFindRoommate"
+              className={({ isActive }) => (isActive ? "text-indigo-600" : "")}
             >
-              Add to Find Roommate
+              Add Roommate
             </NavLink>
           </li>
           <li>
             <NavLink
-              className={({ isActive }) => (isActive ? "text-indigo-800" : "")}
               to="/browseListing"
+              className={({ isActive }) => (isActive ? "text-indigo-600" : "")}
             >
               Browse Listing
             </NavLink>
           </li>
           <li>
             <NavLink
-              className={({ isActive }) => (isActive ? "text-indigo-800" : "")}
               to="/myListings"
+              className={({ isActive }) => (isActive ? "text-indigo-600" : "")}
             >
               My Listings
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/allItems"
+              className={({ isActive }) => (isActive ? "text-indigo-600" : "")}
+            >
+              All Rooms
+            </NavLink>
+          </li>
+          {user && (
+            <li>
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) =>
+                  isActive ? "text-indigo-600" : ""
+                }
+              >
+                Dashboard
+              </NavLink>
+            </li>
+          )}
         </ul>
       </div>
       <div className="navbar-end  space-x-5">
